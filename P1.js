@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Dom Content Loaded')
 })
 
+enemyBox_2.style.backgroundImage = "url('JPG/pirate_1.jpg')"
+
 let i = 5
 
 let holstered = true
@@ -10,10 +12,6 @@ let canDraw = false
 
 let countDown = null
 
-function reset() {
-    clearInterval(countDown)
-    }
-
 function count() {
     if (i !== 0) {
         topText.innerText = i
@@ -21,13 +19,12 @@ function count() {
     } else {
         topText.innerText = 'Draw!'
         canDraw = true
-        //end()
+        end()
     }
 }
 
 function end() {
     clearInterval(countDown)
-    console.log('clearing countdown')
 }
 
 function beginCountDown() {
@@ -37,8 +34,6 @@ function beginCountDown() {
         count()
 
         countDown = setInterval(count, 1000)
-
-        setTimeout(end, 7000)
 
         holstered = false
     }
@@ -69,4 +64,13 @@ document.getElementById('holsterBox').addEventListener('mouseleave', () => {
 
     }
 
+})
+
+document.getElementById('enemyBox_2').addEventListener('click', () => {
+
+    if (canDraw === true) {
+
+        enemyBox_2.style.backgroundImage = "url('JPG/pirate_2.jpg')"
+
+    }
 })

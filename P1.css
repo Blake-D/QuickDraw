@@ -1,4 +1,6 @@
 body {
+    background: url('JPG/Cantina_3.jpg');
+    background-size: cover;
     margin: 0;
     display: grid;
     min-height: 100vh;
@@ -9,11 +11,6 @@ body {
                             "LB E1 E2 E3 RB"
                             "LB E1 E2 E3 RB"
                             "BB BB BB BB HB"
-}
-
-body {
-    background: url('JPG/Cantina_3.jpg');
-    background-size: cover;
 }
 
 div {
@@ -41,6 +38,7 @@ div {
 
 #enemyBox_2 {
     grid-area: E2;
+    background-size: cover;
 }
 
 #enemyBox_3 {
