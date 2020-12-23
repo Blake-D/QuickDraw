@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1f 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:    "TB TB TB TB TB"
+                            "PB E1 E2 E3 RB"
+                            "LB E1 E2 E3 RB"
+                            "LB E1 E2 E3 RB"
+                            "BB BB BB BB HB"
+}
+
+body {
+    background: url('JPG/Cantina_3.jpg');
+    background-size: cover;
+}
+
+div {
+    border: 5px solid white;
+}
+
+#topText {
+  font-size: 40px;
+  margin-top: 5%;
+  color: white;
+  text-align: center;
+}
+
+#topBar {
+    grid-area: TB;
+}
+
+#picBox {
+    grid-area: PB;
+}
+
+#enemyBox_1 {
+    grid-area: E1;
+}
+
+#enemyBox_2 {
+    grid-area: E2;
+}
+
+#enemyBox_3 {
+    grid-area: E3;
+}
+
+#leftBar {
+    grid-area: LB;
+}
+
+#rightBar {
+    grid-area: RB;
+}
+
+#bottomBar {
+    grid-area: BB;
+}
+
+#holsterBox {
+    grid-area: HB;
+}
