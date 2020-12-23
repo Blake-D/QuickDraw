@@ -21,16 +21,14 @@ function count() {
     } else {
         topText.innerText = 'Draw!'
         canDraw = true
+        //end()
     }
 }
 
 function end() {
     clearInterval(countDown)
+    console.log('clearing countdown')
 }
-
-// function reset() {
-//     clearInterval(countDown)
-// }
 
 function beginCountDown() {
 
