@@ -21,7 +21,6 @@ function count() {
     } else {
         topText.innerText = 'Draw!'
         canDraw = true
-        //canShoot = true
         end()
         enemy_1_shoot()
     }
