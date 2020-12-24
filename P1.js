@@ -6,6 +6,8 @@ enemyBox_2.style.backgroundImage = "url('JPG/pirate_1.jpg')"
 
 let i = 5
 
+let gameOver = false
+
 let holstered = true
 
 let canDraw = false
@@ -19,6 +21,7 @@ function count() {
     } else {
         topText.innerText = 'Draw!'
         canDraw = true
+        //canShoot = true
         end()
         enemy_1_shoot()
     }
@@ -26,7 +29,7 @@ function count() {
 
 function beginCountDown() {
 
-    if (holstered === true) {
+    if (holstered === true && gameOver === false) {
 
         countDown = setInterval(count, 1000)
 
@@ -42,7 +45,7 @@ function end() {
 
 document.getElementById('holsterBox').addEventListener('mouseenter', () => {
 
-    if (holstered === true) {
+    if (holstered === true && gameOver === false) {
 
         beginCountDown()
 
@@ -51,7 +54,7 @@ document.getElementById('holsterBox').addEventListener('mouseenter', () => {
 
 document.getElementById('holsterBox').addEventListener('mouseleave', () => {
 
-    if (holstered === false && canDraw === false) {
+    if (holstered === false && canDraw === false && gameOver === false) {
 
         clearTimeout(beginCountDown)
 
@@ -69,7 +72,7 @@ document.getElementById('holsterBox').addEventListener('mouseleave', () => {
 
 document.getElementById('enemyBox_2').addEventListener('click', () => {
 
-    if (canDraw === true) {
+    if (canDraw === true && gameOver === false) {
 
         enemyBox_2.style.backgroundImage = "url('JPG/pirate_2.jpg')"
 
@@ -81,7 +84,7 @@ document.getElementById('enemyBox_2').addEventListener('click', () => {
 let randomNumber = null
 
 const enemy_1 = {
-    accuracy: 4,
+    accuracy: 5,
 }
 
 function generateNumber() {
@@ -90,10 +93,9 @@ function generateNumber() {
 
 function enemy_1_shoot() {
     generateNumber() 
-    if (randomNumber >= 2) {
-        canDraw = false
+    if (randomNumber >= 4) {
+        gameOver = true
         topText.innerText = 'Game Over'
-        randomNumber = null
     } else {
         setTimeout(enemy_1_shoot, 500)
     }
