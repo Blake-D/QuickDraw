@@ -20,24 +20,25 @@ function count() {
         topText.innerText = 'Draw!'
         canDraw = true
         end()
+        enemy_1_shoot()
     }
-}
-
-function end() {
-    clearInterval(countDown)
 }
 
 function beginCountDown() {
 
     if (holstered === true) {
 
-        count()
-
         countDown = setInterval(count, 1000)
+
+        count()
 
         holstered = false
     }
 } 
+
+function end() {
+    clearInterval(countDown)
+}
 
 document.getElementById('holsterBox').addEventListener('mouseenter', () => {
 
@@ -74,3 +75,26 @@ document.getElementById('enemyBox_2').addEventListener('click', () => {
 
     }
 })
+
+//************* */
+
+let randomNumber = null
+
+const enemy_1 = {
+    accuracy: 4,
+}
+
+function generateNumber() {
+    randomNumber = Math.floor(Math.random() * enemy_1.accuracy)
+}
+
+function enemy_1_shoot() {
+    generateNumber() 
+    if (randomNumber >= 2) {
+        canDraw = false
+        topText.innerText = 'Game Over'
+        randomNumber = null
+    } else {
+        setTimeout(enemy_1_shoot, 500)
+    }
+}
