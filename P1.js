@@ -75,27 +75,33 @@ document.getElementById('enemyBox_2').addEventListener('click', () => {
 
         enemyBox_2.style.backgroundImage = "url('JPG/pirate_2.jpg')"
 
+        enemy_1.alive = false
+
+        topText.innerText = 'You Win!'
     }
 })
 
-//************* */
+//Enemy abilities vv
 
-let randomNumber = null
+let randomNumber_1 = null
 
 const enemy_1 = {
     accuracy: 5,
+    alive: true,
 }
 
 function generateNumber() {
-    randomNumber = Math.floor(Math.random() * enemy_1.accuracy)
+    randomNumber_1 = Math.floor(Math.random() * enemy_1.accuracy)
 }
 
 function enemy_1_shoot() {
-    generateNumber() 
-    if (randomNumber >= 4) {
-        gameOver = true
-        topText.innerText = 'Game Over'
-    } else {
-        setTimeout(enemy_1_shoot, 500)
+    if (enemy_1.alive === true) {
+        generateNumber()
+        if (randomNumber_1 >= 4) {
+            gameOver = true
+            topText.innerText = 'Game Over'
+        } else {
+            setInterval(enemy_1_shoot, 500)
+        }
     }
 }
