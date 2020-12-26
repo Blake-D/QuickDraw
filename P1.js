@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 enemyBox_2.style.backgroundImage = "url('JPG/pirate_1.jpg')"
 
+enemyBox_1.style.backgroundImage = "url('JPG/pirate_2.jpg')"
+
 let i = 5
 
 let gameOver = false
@@ -23,6 +25,7 @@ function count() {
         canDraw = true
         end()
         enemy_1_shoot()
+        enemy_2_shoot()
     }
 }
 
@@ -73,35 +76,72 @@ document.getElementById('enemyBox_2').addEventListener('click', () => {
 
     if (canDraw === true && gameOver === false) {
 
-        enemyBox_2.style.backgroundImage = "url('JPG/pirate_2.jpg')"
+        enemyBox_2.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
 
         enemy_1.alive = false
 
-        topText.innerText = 'You Win!'
+        //topText.innerText = 'You Win!'
     }
 })
 
-//Enemy abilities vv
+document.getElementById('enemyBox_1').addEventListener('click', () => {
 
-let randomNumber_1 = null
+    if (canDraw === true && gameOver === false) {
+
+        enemyBox_1.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
+
+        enemy_2.alive = false
+
+        //topText.innerText = 'You Win!'
+    }
+})
+
+//Enemy 1 (in enemyBox 2)
 
 const enemy_1 = {
     accuracy: 5,
     alive: true,
 }
 
-function generateNumber() {
+let randomNumber_1 = null
+
+function generateNumber_1() {
     randomNumber_1 = Math.floor(Math.random() * enemy_1.accuracy)
 }
 
 function enemy_1_shoot() {
     if (enemy_1.alive === true) {
-        generateNumber()
+        generateNumber_1()
         if (randomNumber_1 >= 4) {
             gameOver = true
             topText.innerText = 'Game Over'
         } else {
             setInterval(enemy_1_shoot, 500)
+        }
+    }
+}
+
+//Enemy 2 (in enemy box 1)
+
+const enemy_2 = {
+    accuracy: 5,
+    alive: true,
+}
+
+let randomNumber_2 = null
+
+function generateNumber_2() {
+    randomNumber_2 = Math.floor(Math.random() * enemy_2.accuracy)
+}
+
+function enemy_2_shoot() {
+    if (enemy_2.alive === true) {
+        generateNumber_2()
+        if (randomNumber_2 >= 4) {
+            gameOver = true
+            topText.innerText = 'Game Over'
+        } else {
+            setInterval(enemy_2_shoot, 750)
         }
     }
 }

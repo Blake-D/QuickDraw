@@ -34,6 +34,7 @@ div {
 
 #enemyBox_1 {
     grid-area: E1;
+    background-size: cover;
 }
 
 #enemyBox_2 {
