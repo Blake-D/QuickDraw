@@ -44,6 +44,7 @@ div {
 
 #enemyBox_3 {
     grid-area: E3;
+    background-size: cover;
 }
 
 #leftBar {

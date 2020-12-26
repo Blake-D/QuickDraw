@@ -6,6 +6,8 @@ enemyBox_2.style.backgroundImage = "url('JPG/pirate_1.jpg')"
 
 enemyBox_1.style.backgroundImage = "url('JPG/pirate_2.jpg')"
 
+enemyBox_3.style.backgroundImage = "url('JPG/pirate_3.png')"
+
 let i = 5
 
 let gameOver = false
@@ -26,6 +28,7 @@ function count() {
         end()
         enemy_1_shoot()
         enemy_2_shoot()
+        enemy_3_shoot()
     }
 }
 
@@ -96,6 +99,18 @@ document.getElementById('enemyBox_1').addEventListener('click', () => {
     }
 })
 
+document.getElementById('enemyBox_3').addEventListener('click', () => {
+
+    if (canDraw === true && gameOver === false) {
+
+        enemyBox_3.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
+
+        enemy_3.alive = false
+
+        //topText.innerText = 'You Win!'
+    }
+})
+
 //Enemy 1 (in enemyBox 2)
 
 const enemy_1 = {
@@ -110,7 +125,7 @@ function generateNumber_1() {
 }
 
 function enemy_1_shoot() {
-    if (enemy_1.alive === true) {
+    if (enemy_1.alive === true && gameOver === false) {
         generateNumber_1()
         if (randomNumber_1 >= 4) {
             gameOver = true
@@ -135,13 +150,38 @@ function generateNumber_2() {
 }
 
 function enemy_2_shoot() {
-    if (enemy_2.alive === true) {
+    if (enemy_2.alive === true && gameOver === false) {
         generateNumber_2()
         if (randomNumber_2 >= 4) {
             gameOver = true
             topText.innerText = 'Game Over'
         } else {
             setInterval(enemy_2_shoot, 750)
+        }
+    }
+}
+
+//Enemy 3 (in enemy box 3)
+
+const enemy_3 = {
+    accuracy: 5,
+    alive: true,
+}
+
+let randomNumber_3 = null
+
+function generateNumber_3() {
+    randomNumber_3 = Math.floor(Math.random() * enemy_3.accuracy)
+}
+
+function enemy_3_shoot() {
+    if (enemy_3.alive === true && gameOver === false) {
+        generateNumber_3()
+        if (randomNumber_3 >= 4) {
+            gameOver = true
+            topText.innerText = 'Game Over'
+        } else {
+            setInterval(enemy_3_shoot, 1000)
         }
     }
 }
