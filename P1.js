@@ -8,16 +8,7 @@ roundTwo = false
 
 roundThree = false
 
-if (roundOne === true) {
-    enemyBox_2.style.backgroundImage = "url('JPG/pirate_1.jpg')"
-}
-
-if (roundTwo === true) {
-
-    enemyBox_1.style.backgroundImage = "url('JPG/pirate_2.jpg')"
-
-    enemyBox_3.style.backgroundImage = "url('JPG/pirate_3.png')"
-}
+enemyBox_2.style.backgroundImage = "url('JPG/pirate_1.jpg')"
 
 let i = 5
 
@@ -28,6 +19,17 @@ let holstered = true
 let canDraw = false
 
 let countDown = null
+
+function scanForRoundOneWin() {
+    if (roundTwo === true) {
+
+        enemyBox_2.style.backgroundImage = null
+
+        enemyBox_1.style.backgroundImage = "url('JPG/pirate_2.jpg')"
+
+        enemyBox_3.style.backgroundImage = "url('JPG/pirate_3.png')"
+    }
+}
 
 function roundOneCount() {
     if (roundOne === true) {
@@ -100,6 +102,14 @@ document.getElementById('enemyBox_2').addEventListener('click', () => {
             enemyBox_2.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
 
             enemy_1.alive = false
+
+            roundOne = false
+
+            roundTwo = true
+
+            scanForRoundOneWin()
+
+            topText.innerText = 'Holster Weapon for Round 2'
 
             //topText.innerText = 'You Win!'
         }
