@@ -2,11 +2,22 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Dom Content Loaded')
 })
 
-enemyBox_2.style.backgroundImage = "url('JPG/pirate_1.jpg')"
+roundOne = true
 
-enemyBox_1.style.backgroundImage = "url('JPG/pirate_2.jpg')"
+roundTwo = false
 
-enemyBox_3.style.backgroundImage = "url('JPG/pirate_3.png')"
+roundThree = false
+
+if (roundOne === true) {
+    enemyBox_2.style.backgroundImage = "url('JPG/pirate_1.jpg')"
+}
+
+if (roundTwo === true) {
+
+    enemyBox_1.style.backgroundImage = "url('JPG/pirate_2.jpg')"
+
+    enemyBox_3.style.backgroundImage = "url('JPG/pirate_3.png')"
+}
 
 let i = 5
 
@@ -18,72 +29,81 @@ let canDraw = false
 
 let countDown = null
 
-function count() {
-    if (i !== 0) {
-        topText.innerText = i
-        i--
-    } else {
-        topText.innerText = 'Draw!'
-        canDraw = true
-        end()
-        enemy_1_shoot()
-        enemy_2_shoot()
-        enemy_3_shoot()
+function roundOneCount() {
+    if (roundOne === true) {
+        if (i !== 0) {
+            topText.innerText = i
+            i--
+        } else {
+            topText.innerText = 'Draw!'
+            canDraw = true
+            roundOneEnd()
+            enemy_1_shoot()
+        }
     }
 }
 
-function beginCountDown() {
+function beginCountDownOne() {
+    if (roundOne === true) {
+        if (holstered === true && gameOver === false) {
 
-    if (holstered === true && gameOver === false) {
+            countDown = setInterval(roundOneCount, 1000)
 
-        countDown = setInterval(count, 1000)
+            roundOneCount()
 
-        count()
-
-        holstered = false
+            holstered = false
+        }
     }
 } 
 
-function end() {
+function roundOneEnd() {
     clearInterval(countDown)
 }
 
 document.getElementById('holsterBox').addEventListener('mouseenter', () => {
+    if (roundOne === true) {
+        if (holstered === true && gameOver === false) {
 
-    if (holstered === true && gameOver === false) {
+            beginCountDownOne()
 
-        beginCountDown()
-
+        }
     }
 })
 
 document.getElementById('holsterBox').addEventListener('mouseleave', () => {
 
-    if (holstered === false && canDraw === false && gameOver === false) {
+    if (roundOne === true) {
 
-        clearTimeout(beginCountDown)
+        if (holstered === false && canDraw === false && gameOver === false) {
 
-        setTimeout(end, 1)
+            clearTimeout(beginCountDownOne)
 
-        topText.innerText = 'Holster Your Weapon'
+            setTimeout(roundOneEnd, 1)
 
-        holstered = true
+            topText.innerText = 'Holster Your Weapon'
 
-        i = 5
+            holstered = true
 
+            i = 5
+
+        }
     }
 
 })
 
 document.getElementById('enemyBox_2').addEventListener('click', () => {
 
-    if (canDraw === true && gameOver === false) {
+    if (roundOne === true) {
 
-        enemyBox_2.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
+        if (canDraw === true && gameOver === false) {
 
-        enemy_1.alive = false
+            enemyBox_2.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
 
-        //topText.innerText = 'You Win!'
+            enemy_1.alive = false
+
+            //topText.innerText = 'You Win!'
+        }
+
     }
 })
 
@@ -138,50 +158,50 @@ function enemy_1_shoot() {
 
 //Enemy 2 (in enemy box 1)
 
-const enemy_2 = {
-    accuracy: 5,
-    alive: true,
-}
+// const enemy_2 = {
+//     accuracy: 5,
+//     alive: true,
+// }
 
-let randomNumber_2 = null
+// let randomNumber_2 = null
 
-function generateNumber_2() {
-    randomNumber_2 = Math.floor(Math.random() * enemy_2.accuracy)
-}
+// function generateNumber_2() {
+//     randomNumber_2 = Math.floor(Math.random() * enemy_2.accuracy)
+// }
 
-function enemy_2_shoot() {
-    if (enemy_2.alive === true && gameOver === false) {
-        generateNumber_2()
-        if (randomNumber_2 >= 4) {
-            gameOver = true
-            topText.innerText = 'Game Over'
-        } else {
-            setInterval(enemy_2_shoot, 750)
-        }
-    }
-}
+// function enemy_2_shoot() {
+//     if (enemy_2.alive === true && gameOver === false) {
+//         generateNumber_2()
+//         if (randomNumber_2 >= 4) {
+//             gameOver = true
+//             topText.innerText = 'Game Over'
+//         } else {
+//             setInterval(enemy_2_shoot, 750)
+//         }
+//     }
+// }
 
-//Enemy 3 (in enemy box 3)
+// //Enemy 3 (in enemy box 3)
 
-const enemy_3 = {
-    accuracy: 5,
-    alive: true,
-}
+// const enemy_3 = {
+//     accuracy: 5,
+//     alive: true,
+// }
 
-let randomNumber_3 = null
+// let randomNumber_3 = null
 
-function generateNumber_3() {
-    randomNumber_3 = Math.floor(Math.random() * enemy_3.accuracy)
-}
+// function generateNumber_3() {
+//     randomNumber_3 = Math.floor(Math.random() * enemy_3.accuracy)
+// }
 
-function enemy_3_shoot() {
-    if (enemy_3.alive === true && gameOver === false) {
-        generateNumber_3()
-        if (randomNumber_3 >= 4) {
-            gameOver = true
-            topText.innerText = 'Game Over'
-        } else {
-            setInterval(enemy_3_shoot, 1000)
-        }
-    }
-}
+// function enemy_3_shoot() {
+//     if (enemy_3.alive === true && gameOver === false) {
+//         generateNumber_3()
+//         if (randomNumber_3 >= 4) {
+//             gameOver = true
+//             topText.innerText = 'Game Over'
+//         } else {
+//             setInterval(enemy_3_shoot, 1000)
+//         }
+//     }
+// }
