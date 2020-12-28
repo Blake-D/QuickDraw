@@ -21,13 +21,46 @@ let canDraw = false
 let countDown = null
 
 function scanForRoundOneWin() {
+
     if (enemy_1.alive === false) {
+
+        roundOne = false
+
+        roundTwo = true
+
+        topText.innerText = 'Holster Weapon for Round 2'
 
         enemyBox_2.style.backgroundImage = null
 
         enemyBox_1.style.backgroundImage = "url('JPG/pirate_2.jpg')"
 
         enemyBox_3.style.backgroundImage = "url('JPG/pirate_3.png')"
+
+        holstered = true
+
+        canDraw = false
+
+        countDown = null
+
+        i = 5
+    }
+}
+
+function scanForRoundTwoWin() {
+
+    if (enemy_2.alive === false && enemy_3.alive === false) {
+
+        roundTwo = false
+
+        roundThree = true
+
+        topText.innerText = 'Holster Weapon for Round 3'
+
+        enemyBox_2.style.backgroundImage = "url('JPG/pirate_4.jpg')"
+
+        enemyBox_1.style.backgroundImage = "url('JPG/pirate_5.jpg')"
+
+        enemyBox_3.style.backgroundImage = "url('JPG/pirate_6.jpg')"
 
         holstered = true
 
@@ -162,13 +195,7 @@ document.getElementById('enemyBox_2').addEventListener('click', () => {
 
             enemy_1.alive = false
 
-            roundOne = false
-
-            roundTwo = true
-
             scanForRoundOneWin()
-
-            topText.innerText = 'Holster Weapon for Round 2'
 
             //topText.innerText = 'You Win!'
         }
@@ -185,6 +212,8 @@ document.getElementById('enemyBox_1').addEventListener('click', () => {
             enemyBox_1.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
 
             enemy_2.alive = false
+
+            scanForRoundTwoWin()
 
             //topText.innerText = 'You Win!'
         }
@@ -203,6 +232,8 @@ document.getElementById('enemyBox_3').addEventListener('click', () => {
 
             enemy_3.alive = false
 
+            scanForRoundTwoWin()
+
             //topText.innerText = 'You Win!'
         }
 
@@ -210,7 +241,7 @@ document.getElementById('enemyBox_3').addEventListener('click', () => {
 
 })
 
-//Enemy 1 (in enemyBox 2)
+//Enemy 1 (round 1: in enemyBox 2)
 
 const enemy_1 = {
     accuracy: 5,
@@ -235,7 +266,7 @@ function enemy_1_shoot() {
     }
 }
 
-//Enemy 2 (in enemy box 1)
+//Enemy 2 (round 2: in enemy box 1)
 
 const enemy_2 = {
     accuracy: 5,
@@ -260,7 +291,7 @@ function enemy_2_shoot() {
     }
 }
 
-//Enemy 3 (in enemy box 3)
+//Enemy 3 (round 2: in enemy box 3)
 
 const enemy_3 = {
     accuracy: 5,
@@ -281,6 +312,31 @@ function enemy_3_shoot() {
             topText.innerText = 'Game Over'
         } else {
             setInterval(enemy_3_shoot, 1000)
+        }
+    }
+}
+
+//Enemy 4 (round 3: in enemy box 1)
+
+const enemy_4 = {
+    accuracy: 5,
+    alive: true,
+}
+
+let randomNumber_4 = null
+
+function generateNumber_4() {
+    randomNumber_4 = Math.floor(Math.random() * enemy_4.accuracy)
+}
+
+function enemy_4_shoot() {
+    if (enemy_4.alive === true && gameOver === false) {
+        generateNumber_4()
+        if (randomNumber_4 >= 4) {
+            gameOver = true
+            topText.innerText = 'Game Over'
+        } else {
+            setInterval(enemy_4_shoot, 1000)
         }
     }
 }
