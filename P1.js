@@ -72,6 +72,16 @@ function scanForRoundTwoWin() {
     }
 }
 
+function scanForRoundThreeWin() {
+
+    if (enemy_4.alive === false && enemy_5.alive === false && enemy_6.alive === false) {
+
+        roundThree = false
+
+        topText.innerText = 'You are the GOAT!'
+    }
+}
+
 function roundOneCount() {
     if (roundOne === true) {
         if (i !== 0) {
@@ -97,6 +107,22 @@ function roundTwoCount() {
             end()
             enemy_2_shoot()
             enemy_3_shoot()
+        }
+    }
+}
+
+function roundThreeCount() {
+    if (roundThree === true) {
+        if (i !== 0) {
+            topText.innerText = i
+            i--
+        } else {
+            topText.innerText = 'Draw!'
+            canDraw = true
+            end()
+            enemy_4_shoot()
+            enemy_5_shoot()
+            enemy_6_shoot()
         }
     }
 }
@@ -127,6 +153,19 @@ function beginCountDownTwo() {
     }
 } 
 
+function beginCountDownThree() {
+    if (roundThree === true) {
+        if (holstered === true && gameOver === false) {
+
+            countDown = setInterval(roundThreeCount, 1000)
+
+            roundThreeCount()
+
+            holstered = false
+        }
+    }
+} 
+
 function end() {
     clearInterval(countDown)
 }
@@ -144,9 +183,13 @@ document.getElementById('holsterBox').addEventListener('mouseenter', () => {
             beginCountDownTwo()
 
         }
-    }
+    } else if (roundThree === true) {
+        if (holstered === true && gameOver === false) {
 
-    
+            beginCountDownThree()
+
+        }
+    }
 })
 
 document.getElementById('holsterBox').addEventListener('mouseleave', () => {
@@ -181,6 +224,16 @@ document.getElementById('holsterBox').addEventListener('mouseleave', () => {
             i = 5
 
         }
+    } else if (roundThree === true) {
+
+        if (holstered === false && canDraw === false && gameOver === false) {
+            clearTimeout(beginCountDownThree)
+            setTimeout(end, 1)
+            topText.innerText = 'Holster Your Weapon'
+            holstered = true
+            i = 5
+        }
+
     }
 
 })
@@ -200,6 +253,12 @@ document.getElementById('enemyBox_2').addEventListener('click', () => {
             //topText.innerText = 'You Win!'
         }
 
+    } else if (roundThree === true) {
+        if (canDraw === true && gameOver === false) {
+            enemyBox_2.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
+            enemy_5.alive = false
+            scanForRoundThreeWin()
+        }
     }
 })
 
@@ -218,6 +277,12 @@ document.getElementById('enemyBox_1').addEventListener('click', () => {
             //topText.innerText = 'You Win!'
         }
 
+    } else if (roundThree === true) {
+        if (canDraw === true && gameOver === false) {
+            enemyBox_1.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
+            enemy_4.alive = false
+            scanForRoundThreeWin()
+        }
     }
 
 })
@@ -237,6 +302,12 @@ document.getElementById('enemyBox_3').addEventListener('click', () => {
             //topText.innerText = 'You Win!'
         }
 
+    } else if (roundThree === true) {
+        if (canDraw === true && gameOver === false) {
+            enemyBox_3.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
+            enemy_6.alive = false
+            scanForRoundThreeWin()
+        }
     }
 
 })
@@ -337,6 +408,56 @@ function enemy_4_shoot() {
             topText.innerText = 'Game Over'
         } else {
             setInterval(enemy_4_shoot, 1000)
+        }
+    }
+}
+
+//Enemy 5 (round 3: in enemy box 2)
+
+const enemy_5 = {
+    accuracy: 5,
+    alive: true,
+}
+
+let randomNumber_5 = null
+
+function generateNumber_5() {
+    randomNumber_5 = Math.floor(Math.random() * enemy_5.accuracy)
+}
+
+function enemy_5_shoot() {
+    if (enemy_5.alive === true && gameOver === false) {
+        generateNumber_5()
+        if (randomNumber_5 >= 4) {
+            gameOver = true
+            topText.innerText = 'Game Over'
+        } else {
+            setInterval(enemy_5_shoot, 1000)
+        }
+    }
+}
+
+//Enemy 6 (round 3: in enemy box 3)
+
+const enemy_6 = {
+    accuracy: 5,
+    alive: true,
+}
+
+let randomNumber_6 = null
+
+function generateNumber_6() {
+    randomNumber_6 = Math.floor(Math.random() * enemy_6.accuracy)
+}
+
+function enemy_6_shoot() {
+    if (enemy_6.alive === true && gameOver === false) {
+        generateNumber_6()
+        if (randomNumber_6 >= 4) {
+            gameOver = true
+            topText.innerText = 'Game Over'
+        } else {
+            setInterval(enemy_6_shoot, 1000)
         }
     }
 }
