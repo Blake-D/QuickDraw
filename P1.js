@@ -21,7 +21,7 @@ let canDraw = false
 let countDown = null
 
 function scanForRoundOneWin() {
-    if (roundTwo === true) {
+    if (enemy_1.alive === false) {
 
         enemyBox_2.style.backgroundImage = null
 
