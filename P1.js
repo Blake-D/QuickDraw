@@ -47,7 +47,7 @@ function roundOneCount() {
         } else {
             topText.innerText = 'Draw!'
             canDraw = true
-            roundOneEnd()
+            end()
             enemy_1_shoot()
         }
     }
@@ -61,7 +61,7 @@ function roundTwoCount() {
         } else {
             topText.innerText = 'Draw!'
             canDraw = true
-            roundTwoEnd()
+            end()
             enemy_2_shoot()
             enemy_3_shoot()
         }
@@ -94,11 +94,7 @@ function beginCountDownTwo() {
     }
 } 
 
-function roundOneEnd() {
-    clearInterval(countDown)
-}
-
-function roundTwoEnd() {
+function end() {
     clearInterval(countDown)
 }
 
@@ -128,7 +124,7 @@ document.getElementById('holsterBox').addEventListener('mouseleave', () => {
 
             clearTimeout(beginCountDownOne)
 
-            setTimeout(roundOneEnd, 1)
+            setTimeout(end, 1)
 
             topText.innerText = 'Holster Your Weapon'
 
@@ -143,7 +139,7 @@ document.getElementById('holsterBox').addEventListener('mouseleave', () => {
 
             clearTimeout(beginCountDownTwo)
 
-            setTimeout(roundTwoEnd, 1)
+            setTimeout(end, 1)
 
             topText.innerText = 'Holster Your Weapon'
 
