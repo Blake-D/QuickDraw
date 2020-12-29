@@ -21,7 +21,7 @@ let canDraw = false
 let countDown = null
 
 function laserBlast() {
-    const audio = new Audio('audio/laser.wav')
+    const audio = new Audio('audio/Laser_7.wav')
     audio.play()
 }
 
@@ -175,7 +175,7 @@ function end() {
     clearInterval(countDown)
 }
 
-document.getElementById('holsterBox').addEventListener('mouseenter', () => {
+document.getElementById('holsterBox').addEventListener('click', () => {
     if (roundOne === true) {
         if (holstered === true && gameOver === false) {
 
@@ -341,7 +341,13 @@ function generateNumber_1() {
 
 function enemy_1_shoot() {
     if (enemy_1.alive === true && gameOver === false) {
+        function enemy_1_blast() {
+            const audio1 = new Audio('audio/Laser_1.wav')
+            audio1.play()
+        }
+        enemy_1_blast()
         generateNumber_1()
+        console.log('bang!')
         if (randomNumber_1 >= 4) {
             gameOver = true
             topText.innerText = 'Game Over'
