@@ -20,6 +20,11 @@ let canDraw = false
 
 let countDown = null
 
+function laserBlast() {
+    const audio = new Audio('audio/laser.wav')
+    audio.play()
+}
+
 function scanForRoundOneWin() {
 
     if (enemy_1.alive === false) {
@@ -244,6 +249,8 @@ document.getElementById('enemyBox_2').addEventListener('click', () => {
 
         if (canDraw === true && gameOver === false) {
 
+            laserBlast()
+
             enemyBox_2.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
 
             enemy_1.alive = false
@@ -255,6 +262,7 @@ document.getElementById('enemyBox_2').addEventListener('click', () => {
 
     } else if (roundThree === true) {
         if (canDraw === true && gameOver === false) {
+            laserBlast()
             enemyBox_2.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
             enemy_5.alive = false
             scanForRoundThreeWin()
@@ -268,6 +276,8 @@ document.getElementById('enemyBox_1').addEventListener('click', () => {
 
         if (canDraw === true && gameOver === false) {
 
+            laserBlast()
+
             enemyBox_1.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
 
             enemy_2.alive = false
@@ -279,6 +289,7 @@ document.getElementById('enemyBox_1').addEventListener('click', () => {
 
     } else if (roundThree === true) {
         if (canDraw === true && gameOver === false) {
+            laserBlast()
             enemyBox_1.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
             enemy_4.alive = false
             scanForRoundThreeWin()
@@ -293,6 +304,8 @@ document.getElementById('enemyBox_3').addEventListener('click', () => {
 
         if (canDraw === true && gameOver === false) {
 
+            laserBlast()
+
             enemyBox_3.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
 
             enemy_3.alive = false
@@ -304,6 +317,7 @@ document.getElementById('enemyBox_3').addEventListener('click', () => {
 
     } else if (roundThree === true) {
         if (canDraw === true && gameOver === false) {
+            laserBlast()
             enemyBox_3.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
             enemy_6.alive = false
             scanForRoundThreeWin()
