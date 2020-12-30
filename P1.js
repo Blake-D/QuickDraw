@@ -61,9 +61,9 @@ function scanForRoundTwoWin() {
 
         topText.innerText = 'Holster Weapon for Round 3'
 
-        enemyBox_2.style.backgroundImage = "url('JPG/pirate_4.jpg')"
+        enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_4_stand.png')"
 
-        enemyBox_1.style.backgroundImage = "url('JPG/pirate_5.jpg')"
+        enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_5_stand.png')"
 
         enemyBox_3.style.backgroundImage = "url('JPG/pirate_6.jpg')"
 
@@ -131,6 +131,7 @@ function roundThreeCount() {
             enemy_4_shoot()
             enemy_5_shoot()
             enemy_6_shoot()
+            enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_5_shoot.png')"
         }
     }
 }
