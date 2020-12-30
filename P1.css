@@ -41,6 +41,11 @@ div {
     color: red;
     grid-area: E2;
     background-size: cover;
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 #enemyBox_3 {

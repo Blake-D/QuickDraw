@@ -8,7 +8,7 @@ roundTwo = false
 
 roundThree = false
 
-enemyBox_2.style.backgroundImage = "url('JPG/pirate_resized.png')"
+enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_1_stand.png')"
 
 let i = 5
 
@@ -97,6 +97,7 @@ function roundOneCount() {
             canDraw = true
             end()
             enemy_1_shoot()
+            enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_1_shoot.png')"
         }
     }
 }
@@ -251,7 +252,7 @@ document.getElementById('enemyBox_2').addEventListener('click', () => {
 
             laserBlast()
 
-            enemyBox_2.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
+            enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_1_die.png')"
 
             enemy_1.alive = false
 
