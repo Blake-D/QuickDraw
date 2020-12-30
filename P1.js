@@ -372,6 +372,11 @@ function generateNumber_2() {
 
 function enemy_2_shoot() {
     if (enemy_2.alive === true && gameOver === false) {
+        function enemy_2_blast() {
+            const audio2 = new Audio('audio/Laser_2.wav')
+            audio2.play()
+        }
+        enemy_2_blast()
         generateNumber_2()
         if (randomNumber_2 >= 4) {
             gameOver = true
@@ -397,6 +402,11 @@ function generateNumber_3() {
 
 function enemy_3_shoot() {
     if (enemy_3.alive === true && gameOver === false) {
+        function enemy_3_blast() {
+            const audio3 = new Audio('audio/Laser_3.wav')
+            audio3.play()
+        }
+        enemy_3_blast()
         generateNumber_3()
         if (randomNumber_3 >= 4) {
             gameOver = true
@@ -422,6 +432,11 @@ function generateNumber_4() {
 
 function enemy_4_shoot() {
     if (enemy_4.alive === true && gameOver === false) {
+        function enemy_4_blast() {
+            const audio4 = new Audio('audio/Laser_4.wav')
+            audio4.play()
+        }
+        enemy_4_blast()
         generateNumber_4()
         if (randomNumber_4 >= 4) {
             gameOver = true
@@ -447,6 +462,11 @@ function generateNumber_5() {
 
 function enemy_5_shoot() {
     if (enemy_5.alive === true && gameOver === false) {
+        function enemy_5_blast() {
+            const audio5 = new Audio('audio/Laser_5.wav')
+            audio5.play()
+        }
+        enemy_5_blast()
         generateNumber_5()
         if (randomNumber_5 >= 4) {
             gameOver = true
@@ -472,6 +492,11 @@ function generateNumber_6() {
 
 function enemy_6_shoot() {
     if (enemy_6.alive === true && gameOver === false) {
+        function enemy_6_blast() {
+            const audio6 = new Audio('audio/Laser_6.wav')
+            audio6.play()
+        }
+        enemy_6_blast()
         generateNumber_6()
         if (randomNumber_6 >= 4) {
             gameOver = true
