@@ -33,8 +33,14 @@ div {
 }
 
 #enemyBox_1 {
+    color: red;
     grid-area: E1;
     background-size: cover;
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 #enemyBox_2 {
@@ -49,8 +55,14 @@ div {
 }
 
 #enemyBox_3 {
+    color: red;
     grid-area: E3;
     background-size: cover;
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 #leftBar {

@@ -37,7 +37,7 @@ function scanForRoundOneWin() {
 
         enemyBox_2.style.backgroundImage = null
 
-        enemyBox_1.style.backgroundImage = "url('JPG/pirate_2.jpg')"
+        enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_2_stand.png')"
 
         enemyBox_3.style.backgroundImage = "url('JPG/pirate_3.png')"
 
@@ -113,6 +113,7 @@ function roundTwoCount() {
             end()
             enemy_2_shoot()
             enemy_3_shoot()
+            enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_2_shoot.png')"
         }
     }
 }
@@ -279,7 +280,7 @@ document.getElementById('enemyBox_1').addEventListener('click', () => {
 
             laserBlast()
 
-            enemyBox_1.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
+            enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_2_die.png')"
 
             enemy_2.alive = false
 
