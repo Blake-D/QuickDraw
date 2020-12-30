@@ -65,7 +65,7 @@ function scanForRoundTwoWin() {
 
         enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_5_stand.png')"
 
-        enemyBox_3.style.backgroundImage = "url('JPG/pirate_6.jpg')"
+        enemyBox_3.style.backgroundImage = "url('JPG/pirate_sprite_6_stand.png')"
 
         holstered = true
 
@@ -131,7 +131,9 @@ function roundThreeCount() {
             enemy_4_shoot()
             enemy_5_shoot()
             enemy_6_shoot()
-            enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_5_shoot.png')"
+            enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_4_shoot.png')"
+            enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_5_shoot.png')"
+            enemyBox_3.style.backgroundImage = "url('JPG/pirate_sprite_6_shoot.png')"
         }
     }
 }
@@ -267,7 +269,7 @@ document.getElementById('enemyBox_2').addEventListener('click', () => {
     } else if (roundThree === true) {
         if (canDraw === true && gameOver === false) {
             laserBlast()
-            enemyBox_2.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
+            enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_4_die.png')"
             enemy_5.alive = false
             scanForRoundThreeWin()
         }
@@ -294,7 +296,7 @@ document.getElementById('enemyBox_1').addEventListener('click', () => {
     } else if (roundThree === true) {
         if (canDraw === true && gameOver === false) {
             laserBlast()
-            enemyBox_1.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
+            enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_5_die.png')"
             enemy_4.alive = false
             scanForRoundThreeWin()
         }
@@ -322,7 +324,7 @@ document.getElementById('enemyBox_3').addEventListener('click', () => {
     } else if (roundThree === true) {
         if (canDraw === true && gameOver === false) {
             laserBlast()
-            enemyBox_3.style.backgroundImage = "url('JPG/pirate_dead.jpg')"
+            enemyBox_3.style.backgroundImage = "url('JPG/pirate_sprite_6_die.png')"
             enemy_6.alive = false
             scanForRoundThreeWin()
         }
