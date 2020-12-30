@@ -8,7 +8,7 @@ roundTwo = false
 
 roundThree = false
 
-enemyBox_2.style.backgroundImage = "url('JPG/pirate_1.jpg')"
+enemyBox_2.style.backgroundImage = "url('JPG/pirate_resized.png')"
 
 let i = 5
 
@@ -347,11 +347,12 @@ function enemy_1_shoot() {
         }
         enemy_1_blast()
         generateNumber_1()
-        console.log('bang!')
         if (randomNumber_1 >= 4) {
+            enemyBox_2.innerText = 'Hit'
             gameOver = true
             topText.innerText = 'Game Over'
         } else {
+            enemyBox_2.innerText = 'Miss'
             setInterval(enemy_1_shoot, 500)
         }
     }

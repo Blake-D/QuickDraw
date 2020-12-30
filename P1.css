@@ -38,6 +38,7 @@ div {
 }
 
 #enemyBox_2 {
+    color: red;
     grid-area: E2;
     background-size: cover;
 }
