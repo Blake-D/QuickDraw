@@ -20,6 +20,18 @@ let canDraw = false
 
 let countDown = null
 
+// function sleep(milliseconds) {
+//     const date = Date.now()
+//     let currentDate = null
+//     do {
+//         currentDate = Date.now()
+//     } while (currentDate - date < milliseconds)
+// }
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
+
 function laserBlast() {
     const audio = new Audio('audio/Laser_7.wav')
     audio.play()
@@ -261,7 +273,7 @@ document.getElementById('enemyBox_2').addEventListener('click', () => {
 
             enemy_1.alive = false
 
-            scanForRoundOneWin()
+            sleep(2000).then(() => {scanForRoundOneWin()})
 
             //topText.innerText = 'You Win!'
         }
@@ -288,7 +300,13 @@ document.getElementById('enemyBox_1').addEventListener('click', () => {
 
             enemy_2.alive = false
 
-            scanForRoundTwoWin()
+            if (enemy_3.alive === true) {
+                scanForRoundTwoWin()
+            } else if (enemy_3.alive === false ) {
+                sleep(2000).then(() => {scanForRoundTwoWin()})
+            }
+
+            //scanForRoundTwoWin()
 
             //topText.innerText = 'You Win!'
         }
@@ -316,7 +334,13 @@ document.getElementById('enemyBox_3').addEventListener('click', () => {
 
             enemy_3.alive = false
 
-            scanForRoundTwoWin()
+            if (enemy_2.alive === true) {
+                scanForRoundTwoWin()
+            } else if (enemy_2.alive === false ) {
+                sleep(2000).then(() => {scanForRoundTwoWin()})
+            }
+
+            //scanForRoundTwoWin()
 
             //topText.innerText = 'You Win!'
         }
