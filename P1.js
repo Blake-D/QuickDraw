@@ -20,14 +20,6 @@ let canDraw = false
 
 let countDown = null
 
-// function sleep(milliseconds) {
-//     const date = Date.now()
-//     let currentDate = null
-//     do {
-//         currentDate = Date.now()
-//     } while (currentDate - date < milliseconds)
-// }
-
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
@@ -383,6 +375,7 @@ function enemy_1_shoot() {
             topText.innerText = 'Game Over'
         } else {
             enemyBox_2.innerText = 'Miss'
+            sleep(200).then(() => {enemyBox_2.innerText = ''})
             setInterval(enemy_1_shoot, 500)
         }
     }
@@ -410,9 +403,12 @@ function enemy_2_shoot() {
         enemy_2_blast()
         generateNumber_2()
         if (randomNumber_2 >= 4) {
+            enemyBox_1.innerText = 'Hit'
             gameOver = true
             topText.innerText = 'Game Over'
         } else {
+            enemyBox_1.innerText = 'Miss'
+            sleep(200).then(() => {enemyBox_1.innerText = ''})
             setInterval(enemy_2_shoot, 750)
         }
     }
@@ -440,9 +436,12 @@ function enemy_3_shoot() {
         enemy_3_blast()
         generateNumber_3()
         if (randomNumber_3 >= 4) {
+            enemyBox_3.innerText = 'Hit'
             gameOver = true
             topText.innerText = 'Game Over'
         } else {
+            enemyBox_3.innerText = 'Miss'
+            sleep(200).then(() => {enemyBox_3.innerText = ''})
             setInterval(enemy_3_shoot, 1000)
         }
     }
@@ -470,9 +469,12 @@ function enemy_4_shoot() {
         enemy_4_blast()
         generateNumber_4()
         if (randomNumber_4 >= 4) {
+            enemyBox_1.innerText = 'Hit'
             gameOver = true
             topText.innerText = 'Game Over'
         } else {
+            enemyBox_1.innerText = 'Miss'
+            sleep(200).then(() => {enemyBox_1.innerText = ''})
             setInterval(enemy_4_shoot, 1000)
         }
     }
@@ -500,9 +502,12 @@ function enemy_5_shoot() {
         enemy_5_blast()
         generateNumber_5()
         if (randomNumber_5 >= 4) {
+            enemyBox_2.innerText = 'Hit'
             gameOver = true
             topText.innerText = 'Game Over'
         } else {
+            enemyBox_2.innerText = 'Miss'
+            sleep(200).then(() => {enemyBox_2.innerText = ''})
             setInterval(enemy_5_shoot, 1000)
         }
     }
@@ -530,9 +535,12 @@ function enemy_6_shoot() {
         enemy_6_blast()
         generateNumber_6()
         if (randomNumber_6 >= 4) {
+            enemyBox_3.innerText = 'Hit'
             gameOver = true
             topText.innerText = 'Game Over'
         } else {
+            enemyBox_3.innerText = 'Miss'
+            sleep(200).then(() => {enemyBox_3.innerText = ''})
             setInterval(enemy_6_shoot, 1000)
         }
     }
