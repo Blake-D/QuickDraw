@@ -8,7 +8,7 @@ roundTwo = false
 
 roundThree = false
 
-enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_1_stand.png')"
+enemyBox_2.style.backgroundImage = "url('JPG/spaceship.png')"
 
 let i = 5
 
