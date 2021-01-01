@@ -1,5 +1,5 @@
 body {
-    background: url('JPG/interior.jpeg');
+    background: url('JPG/space_background.gif');
     background-size: cover;
     margin: 0;
     display: grid;
@@ -13,13 +13,13 @@ body {
                             "BB BB BB BB HB"
 }
 
-div {
+/*div {
     border: 5px solid white;
-}
+}*/
 
 #topText {
   font-size: 40px;
-  margin-top: 5%;
+  margin-top: 10%;
   color: white;
   text-align: center;
 }
@@ -30,10 +30,12 @@ div {
 
 #picBox {
     grid-area: PB;
+    color: yellow;
+    text-align: right;
 }
 
 #enemyBox_1 {
-    color: red;
+    color: yellow;
     grid-area: E1;
     background-size: cover;
     position: relative;
@@ -44,7 +46,8 @@ div {
 }
 
 #enemyBox_2 {
-    color: red;
+    color: yellow;
+    text-align: center;
     grid-area: E2;
     background-size: cover;
     position: relative;
@@ -71,6 +74,7 @@ div {
 
 #rightBar {
     grid-area: RB;
+    color: yellow;
 }
 
 #bottomBar {
@@ -79,4 +83,6 @@ div {
 
 #holsterBox {
     grid-area: HB;
+    color: white;
+    text-align: center;
 }

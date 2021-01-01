@@ -2,13 +2,23 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Dom Content Loaded')
 })
 
-roundOne = true
+function introSequence() {
+    enemyBox_2.style.backgroundImage = "url('JPG/spaceship.png')"
+    rightBar.innerText = 'text here text here text here text here text here text here'
+    sleep(5000).then(() => {rightBar.innerText = 'text here and text here and text here and text here and text here and text here'})
+    sleep(10000).then(() => {body.style.backgroundImage = "url('JPG/space_station_background.png')"})
+    sleep(10000).then(() => {enemyBox_2.style.backgroundImage = ""})
+    sleep(10000).then(() => {rightBar.innerText = ""})
+    sleep(10000).then(() => {enemyBox_1.innerText = "and here and here and here and here and here and here"})
+}
+
+titleScreen = true
+
+roundOne = false
 
 roundTwo = false
 
 roundThree = false
-
-enemyBox_2.style.backgroundImage = "url('JPG/spaceship.png')"
 
 let i = 5
 
@@ -184,6 +194,15 @@ function beginCountDownThree() {
 function end() {
     clearInterval(countDown)
 }
+
+document.getElementById('body').addEventListener('click', () => {
+    if (titleScreen === true) {
+        topText.innerText = ''
+        enemyBox_2.innerText = ''
+        titleScreen = false
+        sleep(1000).then(() => {introSequence()})
+    }
+})
 
 document.getElementById('holsterBox').addEventListener('click', () => {
     if (roundOne === true) {
