@@ -3,13 +3,23 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 function introSequence() {
-    enemyBox_2.style.backgroundImage = "url('JPG/spaceship.png')"
-    rightBar.innerText = 'text here text here text here text here text here text here'
-    sleep(5000).then(() => {rightBar.innerText = 'text here and text here and text here and text here and text here and text here'})
+    //enemyBox_2.style.backgroundImage = "url('JPG/spaceship.png')"
+    rightBar.innerText = 'text here'
+    sleep(5000).then(() => {rightBar.innerText = 'and here'})
     sleep(10000).then(() => {body.style.backgroundImage = "url('JPG/space_station_background.png')"})
     sleep(10000).then(() => {enemyBox_2.style.backgroundImage = ""})
     sleep(10000).then(() => {rightBar.innerText = ""})
-    sleep(10000).then(() => {enemyBox_1.innerText = "and here and here and here and here and here and here"})
+    sleep(10000).then(() => {enemyBox_1.innerText = "and then here"})
+    sleep(15000).then(() => {enemyBox_1.innerText = "and finally here"})
+    sleep(15000).then(() => {enemyBox_2.style.backgroundImage = "url('JPG/blaster.jpg')"})
+    sleep(20000).then(() => {battleIntro()})
+}
+
+function battleIntro() {
+    picBox.style.backgroundImage = ""
+    body.style.backgroundImage = "url('JPG/interior.jpeg')"
+    enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_1_stand.png')"
+    enemyBox_1.innerText = ""
 }
 
 titleScreen = true
