@@ -20,6 +20,12 @@ function battleIntro() {
     body.style.backgroundImage = "url('JPG/interior.jpeg')"
     enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_1_stand.png')"
     enemyBox_1.innerText = ""
+    sleep(5000).then(() => {enemyBox_1.innerText = "enemy text here"})
+    sleep(10000).then(() => {enemyBox_1.innerText = "then, enemy text here"})
+    sleep(15000).then(() => {enemyBox_1.innerText = "finally, here"})
+    sleep(20000).then(() => {enemyBox_1.innerText = ""})
+    sleep(20000).then(() => {topText.innerText = "Holster Weapon to Begin"})
+    sleep(20000).then(() => {roundOne = true})
 }
 
 titleScreen = true
