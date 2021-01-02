@@ -5,11 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
 function introSequence() {
     //enemyBox_2.style.backgroundImage = "url('JPG/spaceship.png')"
     body.style.backgroundImage = "url('JPG/spaceship_background.png')"
-    enemyBox_1.innerText = 'After capturing Roth Dering, notorious member of the Klaxorp crime syndicate, your ship limps through space on auxiliary power.'
-    sleep(5000).then(() => {enemyBox_1.innerText = 'Having barely escaped the syndicate hideout in one piece, you head for deep space station Cygnus 11 for fuel and much needed repairs.'})
+    enemyBox_1.innerText = 'After capturing Roz Dering, member of the notorious Klaxorp crime syndicate, your ship limps through space on backup power.'
+    sleep(5000).then(() => {enemyBox_1.innerText = 'Having barely escaped the Klaxorp hideout in one piece, you head to station Cygnus 11 for repairs.'})
     sleep(10000).then(() => {body.style.backgroundImage = "url('JPG/space_station_background.png')"})
-    sleep(10000).then(() => {enemyBox_1.innerText = "Word of Roth`s capture has likely already reached the station, where syndicate thugs undoubtedly wait for you."})
-    sleep(15000).then(() => {enemyBox_1.innerText = "Before stepping off your ship, you make sure your blaster is charged."})
+    sleep(10000).then(() => {enemyBox_1.innerText = "News of Roz`s capture has likely reached the station, where syndicate thugs wait for you."})
+    sleep(15000).then(() => {enemyBox_1.innerText = "Better make sure your blaster is charged."})
     sleep(15000).then(() => {enemyBox_2.style.backgroundImage = "url('JPG/blaster.jpg')"})
     sleep(20000).then(() => {roundOneIntro()})
 }
@@ -58,6 +58,7 @@ function endSequence() {
     topText.innerText = ""
     body.style.backgroundImage = "url('JPG/spaceship_background.png')"
     sleep(2000).then(() => {enemyBox_1.innerText = 'Having defended your title of fastest draw in the quadrant, you patch up your ship and head to the nearest Federation outpost to claim the reward on your bounty.'})
+    sleep(10000).then(() => {enemyBox_1.innerText = 'Thank you for playing.'})
 }
 
 titleScreen = true
