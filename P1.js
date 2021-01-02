@@ -5,10 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
 function introSequence() {
     //enemyBox_2.style.backgroundImage = "url('JPG/spaceship.png')"
     body.style.backgroundImage = "url('JPG/spaceship_background.png')"
-    enemyBox_1.innerText = 'After capturing ________, a member of the notorious ________ syndicate, your ship limps through space on auxiliary power.'
+    enemyBox_1.innerText = 'After capturing Roth Dering, notorious member of the Klaxorp crime syndicate, your ship limps through space on auxiliary power.'
     sleep(5000).then(() => {enemyBox_1.innerText = 'Having barely escaped the syndicate hideout in one piece, you head for deep space station Cygnus 11 for fuel and much needed repairs.'})
     sleep(10000).then(() => {body.style.backgroundImage = "url('JPG/space_station_background.png')"})
-    sleep(10000).then(() => {enemyBox_1.innerText = "Word of ________`s capture has likely already reached the station, where syndicate thugs undoubtedly wait for you."})
+    sleep(10000).then(() => {enemyBox_1.innerText = "Word of Roth`s capture has likely already reached the station, where syndicate thugs undoubtedly wait for you."})
     sleep(15000).then(() => {enemyBox_1.innerText = "Before stepping off your ship, you make sure your blaster is charged."})
     sleep(15000).then(() => {enemyBox_2.style.backgroundImage = "url('JPG/blaster.jpg')"})
     sleep(20000).then(() => {battleIntro()})
@@ -23,7 +23,7 @@ function battleIntro() {
     sleep(5000).then(() => {leftBar.innerText = "Well look who it is."})
     sleep(10000).then(() => {leftBar.innerText = "I'm afraid I'm gonna have to take that bounty off your hands."})
     sleep(15000).then(() => {leftBar.innerText = "But let's make this interesting. Tell you what..."})
-    sleep(20000).then(() => {leftBar.innerText = "You beat me on the draw, you keep him."})
+    sleep(20000).then(() => {leftBar.innerText = "If you can beat me on the draw, you keep him."})
     sleep(25000).then(() => {leftBar.innerText = ""})
     sleep(25000).then(() => {topText.innerText = "Holster Weapon to Begin"})
     sleep(25000).then(() => {picBox.style.backgroundImage = ""})
