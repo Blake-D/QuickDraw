@@ -15,16 +15,20 @@ function introSequence() {
 }
 
 function battleIntro() {
-    picBox.style.backgroundImage = ""
     body.style.backgroundImage = "url('JPG/interior.jpeg')"
     enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_1_stand.png')"
-    enemyBox_1.innerText = ""
-    sleep(5000).then(() => {enemyBox_1.innerText = "enemy text here"})
-    sleep(10000).then(() => {enemyBox_1.innerText = "then, enemy text here"})
-    sleep(15000).then(() => {enemyBox_1.innerText = "finally, here"})
-    sleep(20000).then(() => {enemyBox_1.innerText = ""})
-    sleep(20000).then(() => {topText.innerText = "Holster Weapon to Begin"})
-    sleep(20000).then(() => {roundOne = true})
+    enemyBox_1.innerText = "Sometimes you hate being right."
+    sleep(5000).then(() => {enemyBox_1.innerText = ""})
+    sleep(5000).then(() => {picBox.style.backgroundImage = "url('JPG/profile_2.jpeg')"})
+    sleep(5000).then(() => {leftBar.innerText = "Well look who it is."})
+    sleep(10000).then(() => {leftBar.innerText = "I'm afraid I'm gonna have to take that bounty off your hands."})
+    sleep(15000).then(() => {leftBar.innerText = "But let's make this interesting. Tell you what..."})
+    sleep(20000).then(() => {leftBar.innerText = "You beat me on the draw, you keep him."})
+    sleep(25000).then(() => {leftBar.innerText = ""})
+    sleep(25000).then(() => {topText.innerText = "Holster Weapon to Begin"})
+    sleep(25000).then(() => {picBox.style.backgroundImage = ""})
+    sleep(25000).then(() => {holster_text.innerText = "Click here to holster your blaster"})
+    sleep(25000).then(() => {roundOne = true})
 }
 
 titleScreen = true

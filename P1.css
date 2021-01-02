@@ -70,6 +70,7 @@ body {
 
 #leftBar {
     grid-area: LB;
+    color: yellow;
 }
 
 #rightBar {
@@ -83,6 +84,12 @@ body {
 
 #holsterBox {
     grid-area: HB;
-    color: white;
+    color: yellow;
     text-align: center;
+}
+
+#holster_text {
+    color: yellow;
+    text-align: center;
+    margin-top: 20%;
 }
