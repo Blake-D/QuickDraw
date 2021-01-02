@@ -11,10 +11,10 @@ function introSequence() {
     sleep(10000).then(() => {enemyBox_1.innerText = "Word of Roth`s capture has likely already reached the station, where syndicate thugs undoubtedly wait for you."})
     sleep(15000).then(() => {enemyBox_1.innerText = "Before stepping off your ship, you make sure your blaster is charged."})
     sleep(15000).then(() => {enemyBox_2.style.backgroundImage = "url('JPG/blaster.jpg')"})
-    sleep(20000).then(() => {battleIntro()})
+    sleep(20000).then(() => {roundOneIntro()})
 }
 
-function battleIntro() {
+function roundOneIntro() {
     body.style.backgroundImage = "url('JPG/interior.jpeg')"
     enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_1_stand.png')"
     enemyBox_1.innerText = "Sometimes you hate being right."
@@ -23,12 +23,20 @@ function battleIntro() {
     sleep(5000).then(() => {leftBar.innerText = "Well look who it is."})
     sleep(10000).then(() => {leftBar.innerText = "I'm afraid I'm gonna have to take that bounty off your hands."})
     sleep(15000).then(() => {leftBar.innerText = "But let's make this interesting. Tell you what..."})
-    sleep(20000).then(() => {leftBar.innerText = "If you can beat me on the draw, you keep him."})
+    sleep(20000).then(() => {leftBar.innerText = "If you can beat me on the draw, you can keep him."})
     sleep(25000).then(() => {leftBar.innerText = ""})
     sleep(25000).then(() => {topText.innerText = "Holster Weapon to Begin"})
     sleep(25000).then(() => {picBox.style.backgroundImage = ""})
     sleep(25000).then(() => {holster_text.innerText = "Click here to holster your blaster"})
     sleep(25000).then(() => {roundOne = true})
+}
+
+function roundTwoIntro() {
+    sleep(1000).then(() => {picBox.style.backgroundImage = "url('JPG/profile_3.jpeg')"})
+    sleep(1000).then(() => {leftBar.innerText = "Loks like you made short work of that idiot."})
+    sleep(3000).then(() => {leftBar.innerText = "Think you can take us both?"})
+    sleep(5000).then(() => {leftBar.innerText = ""})
+    sleep(5000).then(() => {picBox.style.backgroundImage = ""})
 }
 
 titleScreen = true
@@ -73,6 +81,8 @@ function scanForRoundOneWin() {
         enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_2_stand.png')"
 
         enemyBox_3.style.backgroundImage = "url('JPG/pirate_sprite_3_stand.png')"
+
+        roundTwoIntro()
 
         holstered = true
 
@@ -129,6 +139,7 @@ function roundOneCount() {
             topText.innerText = 'Draw!'
             canDraw = true
             end()
+            enemy_1.alive = true
             enemy_1_shoot()
             enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_1_shoot.png')"
         }
@@ -144,6 +155,8 @@ function roundTwoCount() {
             topText.innerText = 'Draw!'
             canDraw = true
             end()
+            enemy_2.alive = true
+            enemy_3.alive = true
             enemy_2_shoot()
             enemy_3_shoot()
             enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_2_shoot.png')"
@@ -161,6 +174,9 @@ function roundThreeCount() {
             topText.innerText = 'Draw!'
             canDraw = true
             end()
+            enemy_4.alive = true
+            enemy_5.alive = true
+            enemy_6.alive = true
             enemy_4_shoot()
             enemy_5_shoot()
             enemy_6_shoot()
@@ -220,6 +236,31 @@ document.getElementById('body').addEventListener('click', () => {
         enemyBox_2.innerText = ''
         titleScreen = false
         sleep(1000).then(() => {introSequence()})
+    } 
+    
+    if (gameOver === true) {
+        roundOneIntro()
+        gameOver = false
+        roundOne = false
+        roundTwo = false
+        roundThree = false
+        i = 5
+        holstered = true
+        canDraw = false
+        countDown = null
+        enemyBox_1.style.backgroundImage = ""
+        enemyBox_3.style.backgroundImage = ""
+        topText.innerText = ""
+        enemyBox_1.innerText = "Sometimes you hate being right."
+        enemyBox_2.innerText = ""
+        enemyBox_3.innerText = ""
+        holster_text.innerText = "click here to holster your blaster"
+        enemy_1.alive = false
+        enemy_2.alive = false
+        enemy_3.alive = false
+        enemy_4.alive = false
+        enemy_5.alive = false
+        enemy_6.alive = false
     }
 })
 
@@ -411,6 +452,7 @@ function enemy_1_shoot() {
             enemyBox_2.innerText = 'Hit'
             gameOver = true
             topText.innerText = 'Game Over'
+            holster_text.innerText = 'click anywhere to restart'
         } else {
             enemyBox_2.innerText = 'Miss'
             sleep(200).then(() => {enemyBox_2.innerText = ''})
@@ -444,6 +486,7 @@ function enemy_2_shoot() {
             enemyBox_1.innerText = 'Hit'
             gameOver = true
             topText.innerText = 'Game Over'
+            holster_text.innerText = 'click anywhere to restart'
         } else {
             enemyBox_1.innerText = 'Miss'
             sleep(200).then(() => {enemyBox_1.innerText = ''})
@@ -477,6 +520,7 @@ function enemy_3_shoot() {
             enemyBox_3.innerText = 'Hit'
             gameOver = true
             topText.innerText = 'Game Over'
+            holster_text.innerText = 'click anywhere to restart'
         } else {
             enemyBox_3.innerText = 'Miss'
             sleep(200).then(() => {enemyBox_3.innerText = ''})
@@ -510,6 +554,7 @@ function enemy_4_shoot() {
             enemyBox_1.innerText = 'Hit'
             gameOver = true
             topText.innerText = 'Game Over'
+            holster_text.innerText = 'click anywhere to restart'
         } else {
             enemyBox_1.innerText = 'Miss'
             sleep(200).then(() => {enemyBox_1.innerText = ''})
@@ -543,6 +588,7 @@ function enemy_5_shoot() {
             enemyBox_2.innerText = 'Hit'
             gameOver = true
             topText.innerText = 'Game Over'
+            holster_text.innerText = 'click anywhere to restart'
         } else {
             enemyBox_2.innerText = 'Miss'
             sleep(200).then(() => {enemyBox_2.innerText = ''})
@@ -576,6 +622,7 @@ function enemy_6_shoot() {
             enemyBox_3.innerText = 'Hit'
             gameOver = true
             topText.innerText = 'Game Over'
+            holster_text.innerText = 'click anywhere to restart'
         } else {
             enemyBox_3.innerText = 'Miss'
             sleep(200).then(() => {enemyBox_3.innerText = ''})
