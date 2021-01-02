@@ -33,8 +33,16 @@ function roundOneIntro() {
 
 function roundTwoIntro() {
     sleep(1000).then(() => {picBox.style.backgroundImage = "url('JPG/profile_3.jpeg')"})
-    sleep(1000).then(() => {leftBar.innerText = "Loks like you made short work of that idiot."})
+    sleep(1000).then(() => {leftBar.innerText = "Looks like you made short work of that idiot."})
     sleep(3000).then(() => {leftBar.innerText = "Think you can take us both?"})
+    sleep(5000).then(() => {leftBar.innerText = ""})
+    sleep(5000).then(() => {picBox.style.backgroundImage = ""})
+}
+
+function roundThreeIntro() {
+    sleep(1000).then(() => {picBox.style.backgroundImage = "url('JPG/profile_1.jpeg')"})
+    sleep(1000).then(() => {leftBar.innerText = "Not bad, bounty hunter."})
+    sleep(3000).then(() => {leftBar.innerText = "Is three a crowd?"})
     sleep(5000).then(() => {leftBar.innerText = ""})
     sleep(5000).then(() => {picBox.style.backgroundImage = ""})
 }
@@ -117,6 +125,8 @@ function scanForRoundTwoWin() {
         countDown = null
 
         i = 5
+
+        roundThreeIntro()
     }
 }
 
@@ -238,6 +248,34 @@ document.getElementById('body').addEventListener('click', () => {
         sleep(1000).then(() => {introSequence()})
     } 
     
+    // if (gameOver === true) {
+    //     roundOneIntro()
+    //     gameOver = false
+    //     roundOne = false
+    //     roundTwo = false
+    //     roundThree = false
+    //     i = 5
+    //     holstered = true
+    //     canDraw = false
+    //     countDown = null
+    //     enemyBox_1.style.backgroundImage = ""
+    //     enemyBox_3.style.backgroundImage = ""
+    //     topText.innerText = ""
+    //     enemyBox_1.innerText = "Sometimes you hate being right."
+    //     enemyBox_2.innerText = ""
+    //     enemyBox_3.innerText = ""
+    //     holster_text.innerText = "click here to holster your blaster"
+    //     enemy_1.alive = false
+    //     enemy_2.alive = false
+    //     enemy_3.alive = false
+    //     enemy_4.alive = false
+    //     enemy_5.alive = false
+    //     enemy_6.alive = false
+    // }
+})
+
+document.getElementById('holsterBox').addEventListener('click', () => {
+
     if (gameOver === true) {
         roundOneIntro()
         gameOver = false
@@ -251,7 +289,6 @@ document.getElementById('body').addEventListener('click', () => {
         enemyBox_1.style.backgroundImage = ""
         enemyBox_3.style.backgroundImage = ""
         topText.innerText = ""
-        enemyBox_1.innerText = "Sometimes you hate being right."
         enemyBox_2.innerText = ""
         enemyBox_3.innerText = ""
         holster_text.innerText = "click here to holster your blaster"
@@ -262,9 +299,7 @@ document.getElementById('body').addEventListener('click', () => {
         enemy_5.alive = false
         enemy_6.alive = false
     }
-})
 
-document.getElementById('holsterBox').addEventListener('click', () => {
     if (roundOne === true) {
         if (holstered === true && gameOver === false) {
 
@@ -283,7 +318,7 @@ document.getElementById('holsterBox').addEventListener('click', () => {
             beginCountDownThree()
 
         }
-    }
+    } 
 })
 
 document.getElementById('holsterBox').addEventListener('mouseleave', () => {
@@ -452,7 +487,7 @@ function enemy_1_shoot() {
             enemyBox_2.innerText = 'Hit'
             gameOver = true
             topText.innerText = 'Game Over'
-            holster_text.innerText = 'click anywhere to restart'
+            holster_text.innerText = 'click here to restart'
         } else {
             enemyBox_2.innerText = 'Miss'
             sleep(200).then(() => {enemyBox_2.innerText = ''})
@@ -486,7 +521,7 @@ function enemy_2_shoot() {
             enemyBox_1.innerText = 'Hit'
             gameOver = true
             topText.innerText = 'Game Over'
-            holster_text.innerText = 'click anywhere to restart'
+            holster_text.innerText = 'click here to restart'
         } else {
             enemyBox_1.innerText = 'Miss'
             sleep(200).then(() => {enemyBox_1.innerText = ''})
@@ -520,7 +555,7 @@ function enemy_3_shoot() {
             enemyBox_3.innerText = 'Hit'
             gameOver = true
             topText.innerText = 'Game Over'
-            holster_text.innerText = 'click anywhere to restart'
+            holster_text.innerText = 'click here to restart'
         } else {
             enemyBox_3.innerText = 'Miss'
             sleep(200).then(() => {enemyBox_3.innerText = ''})
@@ -554,7 +589,7 @@ function enemy_4_shoot() {
             enemyBox_1.innerText = 'Hit'
             gameOver = true
             topText.innerText = 'Game Over'
-            holster_text.innerText = 'click anywhere to restart'
+            holster_text.innerText = 'click here to restart'
         } else {
             enemyBox_1.innerText = 'Miss'
             sleep(200).then(() => {enemyBox_1.innerText = ''})
@@ -588,7 +623,7 @@ function enemy_5_shoot() {
             enemyBox_2.innerText = 'Hit'
             gameOver = true
             topText.innerText = 'Game Over'
-            holster_text.innerText = 'click anywhere to restart'
+            holster_text.innerText = 'click here to restart'
         } else {
             enemyBox_2.innerText = 'Miss'
             sleep(200).then(() => {enemyBox_2.innerText = ''})
@@ -622,7 +657,7 @@ function enemy_6_shoot() {
             enemyBox_3.innerText = 'Hit'
             gameOver = true
             topText.innerText = 'Game Over'
-            holster_text.innerText = 'click anywhere to restart'
+            holster_text.innerText = 'click here to restart'
         } else {
             enemyBox_3.innerText = 'Miss'
             sleep(200).then(() => {enemyBox_3.innerText = ''})
