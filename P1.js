@@ -40,11 +40,24 @@ function roundTwoIntro() {
 }
 
 function roundThreeIntro() {
-    sleep(1000).then(() => {picBox.style.backgroundImage = "url('JPG/profile_1.jpeg')"})
+    sleep(1000).then(() => {picBox.style.backgroundImage = "url('JPG/profile_1.png')"})
     sleep(1000).then(() => {leftBar.innerText = "Not bad, bounty hunter."})
     sleep(3000).then(() => {leftBar.innerText = "Is three a crowd?"})
     sleep(5000).then(() => {leftBar.innerText = ""})
     sleep(5000).then(() => {picBox.style.backgroundImage = ""})
+}
+
+function endSequence() {
+    enemyBox_1.style.backgroundImage = ""
+    enemyBox_2.style.backgroundImage = ""
+    enemyBox_3.style.backgroundImage = ""
+    enemyBox_1.innerText = ""
+    enemyBox_2.innerText = ""
+    enemyBox_3.innerText = ""
+    holster_text.innerText = ""
+    topText.innerText = ""
+    body.style.backgroundImage = "url('JPG/spaceship_background.png')"
+    sleep(2000).then(() => {enemyBox_1.innerText = 'Having defended your title of fastest draw in the quadrant, you patch up your ship and head to the nearest Federation outpost to claim the reward on your bounty.'})
 }
 
 titleScreen = true
@@ -136,7 +149,10 @@ function scanForRoundThreeWin() {
 
         roundThree = false
 
-        topText.innerText = 'You are the GOAT!'
+        topText.innerText = 'You Win!'
+
+        sleep(3000).then(() => {endSequence()})
+
     }
 }
 
