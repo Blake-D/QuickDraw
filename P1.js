@@ -4,13 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function introSequence() {
     //enemyBox_2.style.backgroundImage = "url('JPG/spaceship.png')"
-    rightBar.innerText = 'text here'
-    sleep(5000).then(() => {rightBar.innerText = 'and here'})
+    body.style.backgroundImage = "url('JPG/spaceship_background.png')"
+    enemyBox_1.innerText = 'After capturing ________, a member of the notorious ________ syndicate, your ship limps through space on auxiliary power.'
+    sleep(5000).then(() => {enemyBox_1.innerText = 'Having barely escaped the syndicate hideout in one piece, you head for deep space station Cygnus 11 for fuel and much needed repairs.'})
     sleep(10000).then(() => {body.style.backgroundImage = "url('JPG/space_station_background.png')"})
-    sleep(10000).then(() => {enemyBox_2.style.backgroundImage = ""})
-    sleep(10000).then(() => {rightBar.innerText = ""})
-    sleep(10000).then(() => {enemyBox_1.innerText = "and then here"})
-    sleep(15000).then(() => {enemyBox_1.innerText = "and finally here"})
+    sleep(10000).then(() => {enemyBox_1.innerText = "Word of ________`s capture has likely already reached the station, where syndicate thugs undoubtedly wait for you."})
+    sleep(15000).then(() => {enemyBox_1.innerText = "Before stepping off your ship, you make sure your blaster is charged."})
     sleep(15000).then(() => {enemyBox_2.style.backgroundImage = "url('JPG/blaster.jpg')"})
     sleep(20000).then(() => {battleIntro()})
 }

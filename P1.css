@@ -1,5 +1,5 @@
 body {
-    background: url('JPG/spaceship_background.png');
+    background: url('JPG/space_station_background.png');
     background-size: cover;
     margin: 0;
     display: grid;
@@ -14,13 +14,13 @@ body {
 }
 
 /*div {
-    border: 5px solid white;
+    border: 1px solid white;
 }*/
 
 #topText {
   font-size: 40px;
   margin-top: 10%;
-  color: white;
+  color: yellow;
   text-align: center;
 }
 
