@@ -264,31 +264,6 @@ document.getElementById('body').addEventListener('click', () => {
         titleScreen = false
         sleep(1000).then(() => {introSequence()})
     } 
-    
-    // if (gameOver === true) {
-    //     roundOneIntro()
-    //     gameOver = false
-    //     roundOne = false
-    //     roundTwo = false
-    //     roundThree = false
-    //     i = 5
-    //     holstered = true
-    //     canDraw = false
-    //     countDown = null
-    //     enemyBox_1.style.backgroundImage = ""
-    //     enemyBox_3.style.backgroundImage = ""
-    //     topText.innerText = ""
-    //     enemyBox_1.innerText = "Sometimes you hate being right."
-    //     enemyBox_2.innerText = ""
-    //     enemyBox_3.innerText = ""
-    //     holster_text.innerText = "click here to holster your blaster"
-    //     enemy_1.alive = false
-    //     enemy_2.alive = false
-    //     enemy_3.alive = false
-    //     enemy_4.alive = false
-    //     enemy_5.alive = false
-    //     enemy_6.alive = false
-    // }
 })
 
 document.getElementById('holsterBox').addEventListener('click', () => {
