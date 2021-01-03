@@ -5,30 +5,31 @@ document.addEventListener('DOMContentLoaded', () => {
 function introSequence() {
     body.style.backgroundImage = "url('JPG/spaceship_background.png')"
     enemyBox_1.innerText = 'You have captured Roz Dering, member of the notorious Klaxorp crime syndicate.'
-    sleep(5000).then(() => {enemyBox_1.innerText = 'On your way to collect the bounty, you stop at station CYGNUS 11 to refuel.'})
+    sleep(5000).then(() => {enemyBox_1.innerText = 'On your way to collect the bounty, you stop at station CYGNUS 8 to refuel.'})
     sleep(10000).then(() => {body.style.backgroundImage = "url('JPG/space_station_background.png')"})
     sleep(10000).then(() => {enemyBox_1.innerText = "News of Roz`s capture has likely reached the station, where syndicate thugs await."})
     sleep(15000).then(() => {enemyBox_1.innerText = "You make sure your blaster is charged."})
     sleep(15000).then(() => {picBox.style.backgroundImage = "url('JPG/blaster.jpg')"})
-    sleep(20000).then(() => {roundOneIntro()})
+    sleep(20000).then(() => {picBox.style.backgroundImage = ""})
+    sleep(20000).then(() => {enemyBox_1.innerText = "Sure enough..."})
+    sleep(20000).then(() => {body.style.backgroundImage = "url('JPG/interior.jpeg')"})
+    sleep(20000).then(() => {enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_1_stand.png')"})
+    sleep(25000).then(() => {roundOneIntro()})
 }
 
 function roundOneIntro() {
-    picBox.style.backgroundImage = ""
-    enemyBox_1.innerText = "Sure enough..."
-    body.style.backgroundImage = "url('JPG/interior.jpeg')"
     enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_1_stand.png')"
-    sleep(5000).then(() => {enemyBox_1.innerText = ""})
-    sleep(5000).then(() => {picBox.style.backgroundImage = "url('JPG/profile_2.jpeg')"})
-    sleep(5000).then(() => {leftBar.innerText = "Well look who it is."})
-    sleep(10000).then(() => {leftBar.innerText = "I'm afraid I have to take that bounty off your hands."})
-    sleep(15000).then(() => {leftBar.innerText = "But let's make this interesting. Tell you what..."})
-    sleep(20000).then(() => {leftBar.innerText = "If you can beat me on the draw, you can keep him."})
-    sleep(25000).then(() => {leftBar.innerText = ""})
-    sleep(25000).then(() => {topText.innerText = "Holster Weapon to Begin"})
-    sleep(25000).then(() => {picBox.style.backgroundImage = ""})
-    sleep(25000).then(() => {holster_text.innerText = "Click here to holster your blaster"})
-    sleep(25000).then(() => {roundOne = true})
+    enemyBox_1.innerText = ""
+    picBox.style.backgroundImage = "url('JPG/profile_2.jpeg')"
+    leftBar.innerText = "Well look who it is."
+    sleep(5000).then(() => {leftBar.innerText = "I'm afraid I have to take that bounty off your hands."})
+    sleep(10000).then(() => {leftBar.innerText = "But let's make this interesting. Tell you what..."})
+    sleep(15000).then(() => {leftBar.innerText = "If you can beat me on the draw, you can keep him."})
+    sleep(20000).then(() => {leftBar.innerText = ""})
+    sleep(20000).then(() => {topText.innerText = "Holster Weapon to Begin"})
+    sleep(20000).then(() => {picBox.style.backgroundImage = ""})
+    sleep(20000).then(() => {holster_text.innerText = "Click here to holster your blaster"})
+    sleep(20000).then(() => {roundOne = true})
 }
 
 function roundTwoIntro() {
