@@ -3,21 +3,21 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 function introSequence() {
-    //enemyBox_2.style.backgroundImage = "url('JPG/spaceship.png')"
     body.style.backgroundImage = "url('JPG/spaceship_background.png')"
     enemyBox_1.innerText = 'After capturing Roz Dering, member of the notorious Klaxorp crime syndicate, your ship limps through space on backup power.'
     sleep(5000).then(() => {enemyBox_1.innerText = 'Having barely escaped the Klaxorp hideout in one piece, you head to station Cygnus 11 for repairs.'})
     sleep(10000).then(() => {body.style.backgroundImage = "url('JPG/space_station_background.png')"})
     sleep(10000).then(() => {enemyBox_1.innerText = "News of Roz`s capture has likely reached the station, where syndicate thugs wait for you."})
     sleep(15000).then(() => {enemyBox_1.innerText = "Better make sure your blaster is charged."})
-    sleep(15000).then(() => {enemyBox_2.style.backgroundImage = "url('JPG/blaster.jpg')"})
+    sleep(15000).then(() => {picBox.style.backgroundImage = "url('JPG/blaster.jpg')"})
     sleep(20000).then(() => {roundOneIntro()})
 }
 
 function roundOneIntro() {
+    picBox.style.backgroundImage = ""
+    enemyBox_1.innerText = "Sometimes you hate being right."
     body.style.backgroundImage = "url('JPG/interior.jpeg')"
     enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_1_stand.png')"
-    enemyBox_1.innerText = "Sometimes you hate being right."
     sleep(5000).then(() => {enemyBox_1.innerText = ""})
     sleep(5000).then(() => {picBox.style.backgroundImage = "url('JPG/profile_2.jpeg')"})
     sleep(5000).then(() => {leftBar.innerText = "Well look who it is."})

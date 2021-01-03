@@ -14,9 +14,9 @@ body {
                             "BB BB BB BB HB"
 }
 
-/*div {
+/* div {
     border: 1px solid white;
-}*/
+} */
 
 #topText {
     font-family: 'Press Start 2P', cursive;
@@ -35,13 +35,18 @@ body {
     grid-area: PB;
     color: yellow;
     text-align: right;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #enemyBox_1 {
     font-family: 'Press Start 2P', cursive;
     color: yellow;
     grid-area: E1;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     position: relative;
     top: 0;
     right: 0;
@@ -54,7 +59,9 @@ body {
     color: yellow;
     text-align: center;
     grid-area: E2;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     position: relative;
     top: 0;
     right: 0;
@@ -66,7 +73,9 @@ body {
     font-family: 'Press Start 2P', cursive;
     color: yellow;
     grid-area: E3;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     position: relative;
     top: 0;
     right: 0;
