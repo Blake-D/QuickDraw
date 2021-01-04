@@ -92,8 +92,10 @@ function endSequence() {
     holster_text.innerText = ""
     topText.innerText = ""
     body.style.backgroundImage = "url('JPG/spaceship_background.png')"
-    sleep(2000).then(() => {enemyBox_1.innerText = "Having defended your title of fastest draw in the quadrant, you patch up your ship and head to the nearest Federation outpost to claim the reward on your bounty."})
-    sleep(10000).then(() => {enemyBox_1.innerText = "Thank you for playing."})
+    sleep(2000).then(() => {enemyBox_1.innerText = "You've still got it."})
+    sleep(5000).then(() => {enemyBox_1.innerText = "Fastest draw in the sector."})
+    sleep(8000).then(() => {enemyBox_1.innerText = "After refueling your ship, you head to the nearest Federation outpost to claim the reward on your bounty."})
+    sleep(13000).then(() => {enemyBox_1.innerText = "Thank you for playing."})
 }
 
 // Sets a delay before executing a specified function.
