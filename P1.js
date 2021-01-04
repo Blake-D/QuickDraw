@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Dom Content Loaded')
 })
 
-// All comments describe the code directly UNDERNEATH them
+// Comments describe code directly BENEATH them
 
 let titleScreen = true
 
