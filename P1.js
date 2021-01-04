@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Dom Content Loaded')
 })
 
-// Variables
+// All comments describe the code directly UNDERNEATH them
 
 let titleScreen = true
 
@@ -22,6 +22,8 @@ let canDraw = false
 
 let countDown = null
 
+// vv Plays the intro sequence.
+
 function introSequence() {
     body.style.backgroundImage = "url('JPG/spaceship_background.png')"
     enemyBox_1.innerText = "You have captured Roz Dering, member of the notorious Klaxorp crime syndicate."
@@ -36,6 +38,8 @@ function introSequence() {
     sleep(20000).then(() => {enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_1_stand.png')"})
     sleep(25000).then(() => {roundOneIntro()})
 }
+
+// Plays the sequence starting at the enemy 1's first line of dialogue. This is the point to which the game resets after death.
 
 function roundOneIntro() {
     enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_1_stand.png')"
@@ -52,6 +56,8 @@ function roundOneIntro() {
     sleep(20000).then(() => {roundOne = true})
 }
 
+// Cues the dialogue between rounds 1 and 2.
+
 function roundTwoIntro() {
     sleep(1000).then(() => {picBox.style.backgroundImage = "url('JPG/profile_3.jpeg')"})
     sleep(1000).then(() => {leftBar.innerText = "Looks like you made short work of that idiot."})
@@ -60,6 +66,8 @@ function roundTwoIntro() {
     sleep(5000).then(() => {picBox.style.backgroundImage = ""})
 }
 
+// Cues the dialogue between rounds 2 and 3.
+
 function roundThreeIntro() {
     sleep(1000).then(() => {picBox.style.backgroundImage = "url('JPG/profile_1.png')"})
     sleep(1000).then(() => {leftBar.innerText = "Not bad, bounty hunter."})
@@ -67,6 +75,8 @@ function roundThreeIntro() {
     sleep(5000).then(() => {leftBar.innerText = ""})
     sleep(5000).then(() => {picBox.style.backgroundImage = ""})
 }
+
+// Plays the end sequence on win.
 
 function endSequence() {
     enemyBox_1.style.backgroundImage = ""
@@ -82,14 +92,20 @@ function endSequence() {
     sleep(10000).then(() => {enemyBox_1.innerText = "Thank you for playing."})
 }
 
+// Sets a delay before carrying out part of a function
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
+
+// Cues the sound of the player's blaster upon shooting
 
 function laserBlast() {
     const audio = new Audio("audio/Laser_7.wav")
     audio.play()
 }
+
+// The following three functions scan for win conditions in their respective combat rounds. They are called each time the player shoots. If win conditions are met, they cue the transition into the next round.
 
 function scanForRoundOneWin() {
     if (enemy_1.alive === false) {
@@ -130,6 +146,8 @@ function scanForRoundThreeWin() {
         sleep(3000).then(() => {endSequence()})
     }
 }
+
+// The following three functions count down from 5 in their respective rounds. If a count reaches 0, it calls the function(s) that enable the round's enemies to shoot at you. If a countdown is interrupted, it resets.
 
 function roundOneCount() {
     if (roundOne === true) {
@@ -188,6 +206,8 @@ function roundThreeCount() {
     }
 }
 
+// The following three functions set the intervals for their respective rounds' countdowns.
+
 function beginCountDownOne() {
     if (roundOne === true) {
         if (holstered === true && gameOver === false) {
@@ -218,9 +238,13 @@ function beginCountDownThree() {
     }
 } 
 
+// Clears the interval for any function operating on one.
+
 function end() {
     clearInterval(countDown)
 }
+
+// Begins the game if the player clicks anywhere on the title screen.
 
 document.getElementById('body').addEventListener('click', () => {
     if (titleScreen === true) {
@@ -230,6 +254,8 @@ document.getElementById('body').addEventListener('click', () => {
         sleep(1000).then(() => {introSequence()})
     } 
 })
+
+// Begins a round's countdown if clicked on during that round. Resets the game to roundOneIntro if clicked after game over.
 
 document.getElementById('holsterBox').addEventListener('click', () => {
     if (gameOver === true) {
@@ -270,6 +296,8 @@ document.getElementById('holsterBox').addEventListener('click', () => {
     } 
 })
 
+// Resets a countdown if the curser is removed from the holster area before the end of the count.
+
 document.getElementById('holsterBox').addEventListener('mouseleave', () => {
     if (roundOne === true) {
         if (holstered === false && canDraw === false && gameOver === false) {
@@ -297,6 +325,8 @@ document.getElementById('holsterBox').addEventListener('mouseleave', () => {
         }
     }
 })
+
+// The following three listeners shoot at the enemies in the associated grid boxes, then scan for win conditions.
 
 document.getElementById('enemyBox_2').addEventListener('click', () => {
     if (roundOne === true) {
@@ -360,7 +390,7 @@ document.getElementById('enemyBox_3').addEventListener('click', () => {
     }
 })
 
-//Enemy 1 (round 1: in enemyBox 2)
+// Enemy 1 (round 1: in enemyBox 2)
 
 const enemy_1 = {
     accuracy: 5,
