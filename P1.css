@@ -5,7 +5,7 @@ body {
     margin: 0;
     display: grid;
     min-height: 100vh;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1f 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas:    "TB TB TB TB TB"
                             "PB E1 E2 E3 RB"
@@ -14,16 +14,16 @@ body {
                             "BB BB BB BB HB"
 }
 
-/* div {
+div {
+    color: yellow;
     border: 1px solid white;
-} */
+}
 
 #topText {
     font-family: 'Press Start 2P', cursive;
-  font-size: 40px;
-  margin-top: 10%;
-  color: yellow;
-  text-align: center;
+    font-size: 40px;
+    padding-top: 5%;
+    text-align: center;
 }
 
 #topBar {
@@ -33,7 +33,6 @@ body {
 #picBox {
     font-family: 'Press Start 2P', cursive;
     grid-area: PB;
-    color: yellow;
     text-align: right;
     background-size: contain;
     background-repeat: no-repeat;
@@ -42,57 +41,40 @@ body {
 
 #enemyBox_1 {
     font-family: 'Press Start 2P', cursive;
-    color: yellow;
     grid-area: E1;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center bottom;
     position: relative;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
 }
 
 #enemyBox_2 {
     font-family: 'Press Start 2P', cursive;
-    color: yellow;
     text-align: center;
     grid-area: E2;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center bottom;
     position: relative;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
 }
 
 #enemyBox_3 {
     font-family: 'Press Start 2P', cursive;
-    color: yellow;
     grid-area: E3;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center bottom;
     position: relative;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
 }
 
 #leftBar {
     font-family: 'Press Start 2P', cursive;
     grid-area: LB;
-    color: yellow;
 }
 
 #rightBar {
     font-family: 'Press Start 2P', cursive;
     grid-area: RB;
-    color: yellow;
 }
 
 #bottomBar {
@@ -102,13 +84,11 @@ body {
 #holsterBox {
     font-family: 'Press Start 2P', cursive;
     grid-area: HB;
-    color: yellow;
     text-align: center;
 }
 
 #holster_text {
     font-family: 'Press Start 2P', cursive;
-    color: yellow;
     text-align: center;
-    margin-top: 20%;
+    padding-top: 20%;
 }

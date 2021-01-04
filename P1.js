@@ -115,7 +115,7 @@ function scanForRoundOneWin() {
     if (enemy_1.alive === false) {
         roundOne = false
         roundTwo = true
-        topText.innerText = "Holster Weapon for Round 2"
+        topText.innerText = "Round 2"
         enemyBox_2.style.backgroundImage = null
         enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_2_stand.png')"
         enemyBox_3.style.backgroundImage = "url('JPG/pirate_sprite_3_stand.png')"
@@ -131,7 +131,7 @@ function scanForRoundTwoWin() {
     if (enemy_2.alive === false && enemy_3.alive === false) {
         roundTwo = false
         roundThree = true
-        topText.innerText = "Holster Weapon for Round 3"
+        topText.innerText = "Round 3"
         enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_4_stand.png')"
         enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_5_stand.png')"
         enemyBox_3.style.backgroundImage = "url('JPG/pirate_sprite_6_stand.png')"
