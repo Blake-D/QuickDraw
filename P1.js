@@ -22,7 +22,11 @@ let canDraw = false
 
 let countDown = null
 
-// vv Plays the intro sequence.
+
+// *** FUNCTIONS *** (except for those specific to enemy combatants)
+
+
+// Plays the intro sequence.
 
 function introSequence() {
     body.style.backgroundImage = "url('JPG/spaceship_background.png')"
@@ -92,7 +96,7 @@ function endSequence() {
     sleep(10000).then(() => {enemyBox_1.innerText = "Thank you for playing."})
 }
 
-// Sets a delay before carrying out part of a function
+// Sets a delay before executing a specified function.
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
@@ -147,7 +151,7 @@ function scanForRoundThreeWin() {
     }
 }
 
-// The following three functions count down from 5 in their respective rounds. If a count reaches 0, it calls the function(s) that enable the round's enemies to shoot at you. If a countdown is interrupted, it resets.
+// The following three functions count down from 5 in their respective rounds. If a count reaches 0, it calls the function(s) that enable the round's enemies to shoot at you. If a countdown is interrupted before reaching 0, it resets.
 
 function roundOneCount() {
     if (roundOne === true) {
@@ -244,6 +248,10 @@ function end() {
     clearInterval(countDown)
 }
 
+
+// *** EVENT LISTENERS ***
+
+
 // Begins the game if the player clicks anywhere on the title screen.
 
 document.getElementById('body').addEventListener('click', () => {
@@ -255,7 +263,7 @@ document.getElementById('body').addEventListener('click', () => {
     } 
 })
 
-// Begins a round's countdown if clicked on during that round. Resets the game to roundOneIntro if clicked after game over.
+// Begins a round's countdown. Resets the game to roundOneIntro if clicked after Game Over.
 
 document.getElementById('holsterBox').addEventListener('click', () => {
     if (gameOver === true) {
@@ -390,6 +398,10 @@ document.getElementById('enemyBox_3').addEventListener('click', () => {
     }
 })
 
+
+// *** ENEMY OBJECTS AND FUNCTIONS *** (They all work the same way; only comments on Enemy 1 are provided)
+
+
 // Enemy 1 (round 1: in enemyBox 2)
 
 const enemy_1 = {
@@ -399,9 +411,13 @@ const enemy_1 = {
 
 let randomNumber_1 = null
 
+// Uses the enemy's accuracy stat to generate a random number. That number is then used to determine if each shot the enemy takes is a hit or a miss.
+
 function generateNumber_1() {
     randomNumber_1 = Math.floor(Math.random() * enemy_1.accuracy)
 }
+
+// The enemy attack! Cue's the enemy's laser gun audio, calls generateNumber to determine hit or miss, sets an interval to repeat if miss, prints result in the enemy's grid box.
 
 function enemy_1_shoot() {
     if (enemy_1.alive === true && gameOver === false) {
