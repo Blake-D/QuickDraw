@@ -2,10 +2,30 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Dom Content Loaded')
 })
 
+// Variables
+
+let titleScreen = true
+
+let roundOne = false
+
+let roundTwo = false
+
+let roundThree = false
+
+let i = 5
+
+let gameOver = false
+
+let holstered = true
+
+let canDraw = false
+
+let countDown = null
+
 function introSequence() {
     body.style.backgroundImage = "url('JPG/spaceship_background.png')"
-    enemyBox_1.innerText = 'You have captured Roz Dering, member of the notorious Klaxorp crime syndicate.'
-    sleep(5000).then(() => {enemyBox_1.innerText = 'On your way to collect the bounty, you stop at station CYGNUS 8 to refuel.'})
+    enemyBox_1.innerText = "You have captured Roz Dering, member of the notorious Klaxorp crime syndicate."
+    sleep(5000).then(() => {enemyBox_1.innerText = "On your way to collect the bounty, you stop at station CYGNUS 8 to refuel."})
     sleep(10000).then(() => {body.style.backgroundImage = "url('JPG/space_station_background.png')"})
     sleep(10000).then(() => {enemyBox_1.innerText = "News of Roz`s capture has likely reached the station, where syndicate thugs await."})
     sleep(15000).then(() => {enemyBox_1.innerText = "You make sure your blaster is charged."})
@@ -58,103 +78,56 @@ function endSequence() {
     holster_text.innerText = ""
     topText.innerText = ""
     body.style.backgroundImage = "url('JPG/spaceship_background.png')"
-    sleep(2000).then(() => {enemyBox_1.innerText = 'Having defended your title of fastest draw in the quadrant, you patch up your ship and head to the nearest Federation outpost to claim the reward on your bounty.'})
-    sleep(10000).then(() => {enemyBox_1.innerText = 'Thank you for playing.'})
+    sleep(2000).then(() => {enemyBox_1.innerText = "Having defended your title of fastest draw in the quadrant, you patch up your ship and head to the nearest Federation outpost to claim the reward on your bounty."})
+    sleep(10000).then(() => {enemyBox_1.innerText = "Thank you for playing."})
 }
-
-titleScreen = true
-
-roundOne = false
-
-roundTwo = false
-
-roundThree = false
-
-let i = 5
-
-let gameOver = false
-
-let holstered = true
-
-let canDraw = false
-
-let countDown = null
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
 
 function laserBlast() {
-    const audio = new Audio('audio/Laser_7.wav')
+    const audio = new Audio("audio/Laser_7.wav")
     audio.play()
 }
 
 function scanForRoundOneWin() {
-
     if (enemy_1.alive === false) {
-
         roundOne = false
-
         roundTwo = true
-
-        topText.innerText = 'Holster Weapon for Round 2'
-
+        topText.innerText = "Holster Weapon for Round 2"
         enemyBox_2.style.backgroundImage = null
-
         enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_2_stand.png')"
-
         enemyBox_3.style.backgroundImage = "url('JPG/pirate_sprite_3_stand.png')"
-
         roundTwoIntro()
-
         holstered = true
-
         canDraw = false
-
         countDown = null
-
         i = 5
     }
 }
 
 function scanForRoundTwoWin() {
-
     if (enemy_2.alive === false && enemy_3.alive === false) {
-
         roundTwo = false
-
         roundThree = true
-
-        topText.innerText = 'Holster Weapon for Round 3'
-
+        topText.innerText = "Holster Weapon for Round 3"
         enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_4_stand.png')"
-
         enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_5_stand.png')"
-
         enemyBox_3.style.backgroundImage = "url('JPG/pirate_sprite_6_stand.png')"
-
         holstered = true
-
         canDraw = false
-
         countDown = null
-
         i = 5
-
         roundThreeIntro()
     }
 }
 
 function scanForRoundThreeWin() {
-
     if (enemy_4.alive === false && enemy_5.alive === false && enemy_6.alive === false) {
-
         roundThree = false
-
-        topText.innerText = 'You Win!'
-
+        topText.innerText = "You Win!"
         sleep(3000).then(() => {endSequence()})
-
     }
 }
 
@@ -164,7 +137,7 @@ function roundOneCount() {
             topText.innerText = i
             i--
         } else {
-            topText.innerText = 'Draw!'
+            topText.innerText = "Draw!"
             canDraw = true
             end()
             enemy_1.alive = true
@@ -180,7 +153,7 @@ function roundTwoCount() {
             topText.innerText = i
             i--
         } else {
-            topText.innerText = 'Draw!'
+            topText.innerText = "Draw!"
             canDraw = true
             end()
             enemy_2.alive = true
@@ -199,7 +172,7 @@ function roundThreeCount() {
             topText.innerText = i
             i--
         } else {
-            topText.innerText = 'Draw!'
+            topText.innerText = "Draw!"
             canDraw = true
             end()
             enemy_4.alive = true
@@ -218,11 +191,8 @@ function roundThreeCount() {
 function beginCountDownOne() {
     if (roundOne === true) {
         if (holstered === true && gameOver === false) {
-
             countDown = setInterval(roundOneCount, 1000)
-
             roundOneCount()
-
             holstered = false
         }
     }
@@ -231,11 +201,8 @@ function beginCountDownOne() {
 function beginCountDownTwo() {
     if (roundTwo === true) {
         if (holstered === true && gameOver === false) {
-
             countDown = setInterval(roundTwoCount, 1000)
-
             roundTwoCount()
-
             holstered = false
         }
     }
@@ -244,11 +211,8 @@ function beginCountDownTwo() {
 function beginCountDownThree() {
     if (roundThree === true) {
         if (holstered === true && gameOver === false) {
-
             countDown = setInterval(roundThreeCount, 1000)
-
             roundThreeCount()
-
             holstered = false
         }
     }
@@ -260,15 +224,14 @@ function end() {
 
 document.getElementById('body').addEventListener('click', () => {
     if (titleScreen === true) {
-        topText.innerText = ''
-        enemyBox_2.innerText = ''
+        topText.innerText = ""
+        enemyBox_2.innerText = ""
         titleScreen = false
         sleep(1000).then(() => {introSequence()})
     } 
 })
 
 document.getElementById('holsterBox').addEventListener('click', () => {
-
     if (gameOver === true) {
         roundOneIntro()
         gameOver = false
@@ -292,91 +255,57 @@ document.getElementById('holsterBox').addEventListener('click', () => {
         enemy_5.alive = false
         enemy_6.alive = false
     }
-
     if (roundOne === true) {
         if (holstered === true && gameOver === false) {
-
             beginCountDownOne()
-
         }
     } else if (roundTwo === true) {
         if (holstered === true && gameOver === false) {
-
             beginCountDownTwo()
-
         }
     } else if (roundThree === true) {
         if (holstered === true && gameOver === false) {
-
             beginCountDownThree()
-
         }
     } 
 })
 
 document.getElementById('holsterBox').addEventListener('mouseleave', () => {
-
     if (roundOne === true) {
-
         if (holstered === false && canDraw === false && gameOver === false) {
-
             clearTimeout(beginCountDownOne)
-
             setTimeout(end, 1)
-
-            topText.innerText = 'Holster Your Weapon'
-
+            topText.innerText = "Holster Your Weapon"
             holstered = true
-
             i = 5
-
         }
     } else if (roundTwo === true) {
-
         if (holstered === false && canDraw === false && gameOver === false) {
-
             clearTimeout(beginCountDownTwo)
-
             setTimeout(end, 1)
-
-            topText.innerText = 'Holster Your Weapon'
-
+            topText.innerText = "Holster Your Weapon"
             holstered = true
-
             i = 5
-
         }
     } else if (roundThree === true) {
-
         if (holstered === false && canDraw === false && gameOver === false) {
             clearTimeout(beginCountDownThree)
             setTimeout(end, 1)
-            topText.innerText = 'Holster Your Weapon'
+            topText.innerText = "Holster Your Weapon"
             holstered = true
             i = 5
         }
-
     }
-
 })
 
 document.getElementById('enemyBox_2').addEventListener('click', () => {
-
     if (roundOne === true) {
-
         if (canDraw === true && gameOver === false) {
-
             laserBlast()
-
             enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_1_die.png')"
-
             enemy_1.alive = false
-
             sleep(2000).then(() => {scanForRoundOneWin()})
-
-            //topText.innerText = 'You Win!'
         }
-
     } else if (roundThree === true) {
         if (canDraw === true && gameOver === false) {
             laserBlast()
@@ -388,28 +317,17 @@ document.getElementById('enemyBox_2').addEventListener('click', () => {
 })
 
 document.getElementById('enemyBox_1').addEventListener('click', () => {
-
     if (roundTwo === true) {
-
         if (canDraw === true && gameOver === false) {
-
             laserBlast()
-
             enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_2_die.png')"
-
             enemy_2.alive = false
-
             if (enemy_3.alive === true) {
                 scanForRoundTwoWin()
             } else if (enemy_3.alive === false ) {
                 sleep(2000).then(() => {scanForRoundTwoWin()})
             }
-
-            //scanForRoundTwoWin()
-
-            //topText.innerText = 'You Win!'
         }
-
     } else if (roundThree === true) {
         if (canDraw === true && gameOver === false) {
             laserBlast()
@@ -418,32 +336,20 @@ document.getElementById('enemyBox_1').addEventListener('click', () => {
             scanForRoundThreeWin()
         }
     }
-
 })
 
 document.getElementById('enemyBox_3').addEventListener('click', () => {
-
     if (roundTwo === true) {
-
         if (canDraw === true && gameOver === false) {
-
             laserBlast()
-
             enemyBox_3.style.backgroundImage = "url('JPG/pirate_sprite_3_die.png')"
-
             enemy_3.alive = false
-
             if (enemy_2.alive === true) {
                 scanForRoundTwoWin()
             } else if (enemy_2.alive === false ) {
                 sleep(2000).then(() => {scanForRoundTwoWin()})
             }
-
-            //scanForRoundTwoWin()
-
-            //topText.innerText = 'You Win!'
         }
-
     } else if (roundThree === true) {
         if (canDraw === true && gameOver === false) {
             laserBlast()
@@ -452,7 +358,6 @@ document.getElementById('enemyBox_3').addEventListener('click', () => {
             scanForRoundThreeWin()
         }
     }
-
 })
 
 //Enemy 1 (round 1: in enemyBox 2)
@@ -471,19 +376,19 @@ function generateNumber_1() {
 function enemy_1_shoot() {
     if (enemy_1.alive === true && gameOver === false) {
         function enemy_1_blast() {
-            const audio1 = new Audio('audio/Laser_1.wav')
+            const audio1 = new Audio("audio/Laser_1.wav")
             audio1.play()
         }
         enemy_1_blast()
         generateNumber_1()
         if (randomNumber_1 >= 4) {
-            enemyBox_2.innerText = 'Hit'
+            enemyBox_2.innerText = "Hit"
             gameOver = true
-            topText.innerText = 'Game Over'
-            holster_text.innerText = 'click here to restart'
+            topText.innerText = "Game Over"
+            holster_text.innerText = "click here to restart"
         } else {
-            enemyBox_2.innerText = 'Miss'
-            sleep(200).then(() => {enemyBox_2.innerText = ''})
+            enemyBox_2.innerText = "Miss"
+            sleep(200).then(() => {enemyBox_2.innerText = ""})
             setInterval(enemy_1_shoot, 500)
         }
     }
@@ -505,19 +410,19 @@ function generateNumber_2() {
 function enemy_2_shoot() {
     if (enemy_2.alive === true && gameOver === false) {
         function enemy_2_blast() {
-            const audio2 = new Audio('audio/Laser_2.wav')
+            const audio2 = new Audio("audio/Laser_2.wav")
             audio2.play()
         }
         enemy_2_blast()
         generateNumber_2()
         if (randomNumber_2 >= 4) {
-            enemyBox_1.innerText = 'Hit'
+            enemyBox_1.innerText = "Hit"
             gameOver = true
-            topText.innerText = 'Game Over'
-            holster_text.innerText = 'click here to restart'
+            topText.innerText = "Game Over"
+            holster_text.innerText = "click here to restart"
         } else {
-            enemyBox_1.innerText = 'Miss'
-            sleep(200).then(() => {enemyBox_1.innerText = ''})
+            enemyBox_1.innerText = "Miss"
+            sleep(200).then(() => {enemyBox_1.innerText = ""})
             setInterval(enemy_2_shoot, 750)
         }
     }
@@ -539,19 +444,19 @@ function generateNumber_3() {
 function enemy_3_shoot() {
     if (enemy_3.alive === true && gameOver === false) {
         function enemy_3_blast() {
-            const audio3 = new Audio('audio/Laser_3.wav')
+            const audio3 = new Audio("audio/Laser_3.wav")
             audio3.play()
         }
         enemy_3_blast()
         generateNumber_3()
         if (randomNumber_3 >= 4) {
-            enemyBox_3.innerText = 'Hit'
+            enemyBox_3.innerText = "Hit"
             gameOver = true
-            topText.innerText = 'Game Over'
-            holster_text.innerText = 'click here to restart'
+            topText.innerText = "Game Over"
+            holster_text.innerText = "click here to restart"
         } else {
-            enemyBox_3.innerText = 'Miss'
-            sleep(200).then(() => {enemyBox_3.innerText = ''})
+            enemyBox_3.innerText = "Miss"
+            sleep(200).then(() => {enemyBox_3.innerText = ""})
             setInterval(enemy_3_shoot, 1000)
         }
     }
@@ -573,19 +478,19 @@ function generateNumber_4() {
 function enemy_4_shoot() {
     if (enemy_4.alive === true && gameOver === false) {
         function enemy_4_blast() {
-            const audio4 = new Audio('audio/Laser_4.wav')
+            const audio4 = new Audio("audio/Laser_4.wav")
             audio4.play()
         }
         enemy_4_blast()
         generateNumber_4()
         if (randomNumber_4 >= 4) {
-            enemyBox_1.innerText = 'Hit'
+            enemyBox_1.innerText = "Hit"
             gameOver = true
-            topText.innerText = 'Game Over'
-            holster_text.innerText = 'click here to restart'
+            topText.innerText = "Game Over"
+            holster_text.innerText = "click here to restart"
         } else {
-            enemyBox_1.innerText = 'Miss'
-            sleep(200).then(() => {enemyBox_1.innerText = ''})
+            enemyBox_1.innerText = "Miss"
+            sleep(200).then(() => {enemyBox_1.innerText = ""})
             setInterval(enemy_4_shoot, 1000)
         }
     }
@@ -607,19 +512,19 @@ function generateNumber_5() {
 function enemy_5_shoot() {
     if (enemy_5.alive === true && gameOver === false) {
         function enemy_5_blast() {
-            const audio5 = new Audio('audio/Laser_5.wav')
+            const audio5 = new Audio("audio/Laser_5.wav")
             audio5.play()
         }
         enemy_5_blast()
         generateNumber_5()
         if (randomNumber_5 >= 4) {
-            enemyBox_2.innerText = 'Hit'
+            enemyBox_2.innerText = "Hit"
             gameOver = true
-            topText.innerText = 'Game Over'
-            holster_text.innerText = 'click here to restart'
+            topText.innerText = "Game Over"
+            holster_text.innerText = "click here to restart"
         } else {
-            enemyBox_2.innerText = 'Miss'
-            sleep(200).then(() => {enemyBox_2.innerText = ''})
+            enemyBox_2.innerText = "Miss"
+            sleep(200).then(() => {enemyBox_2.innerText = ""})
             setInterval(enemy_5_shoot, 1000)
         }
     }
@@ -641,19 +546,19 @@ function generateNumber_6() {
 function enemy_6_shoot() {
     if (enemy_6.alive === true && gameOver === false) {
         function enemy_6_blast() {
-            const audio6 = new Audio('audio/Laser_6.wav')
+            const audio6 = new Audio("audio/Laser_6.wav")
             audio6.play()
         }
         enemy_6_blast()
         generateNumber_6()
         if (randomNumber_6 >= 4) {
-            enemyBox_3.innerText = 'Hit'
+            enemyBox_3.innerText = "Hit"
             gameOver = true
-            topText.innerText = 'Game Over'
-            holster_text.innerText = 'click here to restart'
+            topText.innerText = "Game Over"
+            holster_text.innerText = "click here to restart"
         } else {
-            enemyBox_3.innerText = 'Miss'
-            sleep(200).then(() => {enemyBox_3.innerText = ''})
+            enemyBox_3.innerText = "Miss"
+            sleep(200).then(() => {enemyBox_3.innerText = ""})
             setInterval(enemy_6_shoot, 1000)
         }
     }
