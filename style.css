@@ -1,0 +1,84 @@
+body {
+    font-family: 'Press Start 2P', monospace;
+    background: url('JPG/space_station_background.png');
+    background-size: cover;
+    margin: 0;
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:    "TB TB TB TB TB"
+                            "PB E1 E2 E3 RB"
+                            "LB E1 E2 E3 RB"
+                            "LB E1 E2 E3 RB"
+                            "BB BB BB BB HB"
+}
+
+div {
+    color: yellow;
+}
+
+#topText {
+    font-size: 40px;
+    padding-top: 5%;
+    text-align: center;
+}
+
+#topBar {
+    grid-area: TB;
+}
+
+#picBox {
+    grid-area: PB;
+    text-align: right;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#enemyBox_1 {
+    grid-area: E1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    position: relative;
+}
+
+#enemyBox_2 {
+    text-align: center;
+    grid-area: E2;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    position: relative;
+}
+
+#enemyBox_3 {
+    grid-area: E3;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    position: relative;
+}
+
+#leftBar {
+    grid-area: LB;
+}
+
+#rightBar {
+    grid-area: RB;
+}
+
+#bottomBar {
+    grid-area: BB;
+}
+
+#holsterBox {
+    grid-area: HB;
+    text-align: center;
+}
+
+#holster_text {
+    text-align: center;
+    padding-top: 20%;
+}
