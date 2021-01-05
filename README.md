@@ -77,8 +77,6 @@ If this is the case, there will ideally be five rounds instead of three.
 
 The character sprites don't re-scale the same way as the background, so I'm not crazy about how it looks as the screen gets smaller.
 
-The final round might be a little easy.
-
 
 
 

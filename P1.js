@@ -122,8 +122,8 @@ function scanForWin() {
         enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_2_stand.png')"
         enemyBox_3.style.backgroundImage = "url('JPG/pirate_sprite_3_stand.png')"
         roundTwoIntro()
-        holstered = true
         canDraw = false
+        holstered = true
         countDown = null
         i = 5
     } else if (roundTwo === true && enemy_2.alive === false && enemy_3.alive === false) {
@@ -145,9 +145,9 @@ function scanForWin() {
     }
 }
 
-// The following three functions count down from 5 in their respective rounds. If a count reaches 0, it calls the function(s) that enable the round's enemies to shoot at you. If a countdown is interrupted before reaching 0, it resets.
+// Counts down from 5, enabling the player and enemies to fire at each other when it reaches 0. If interrupted before reaching 0, it resets.
 
-function roundOneCount() {
+function countFromFive() {
     if (roundOne === true) {
         if (i !== 0) {
             topText.innerText = i
@@ -157,15 +157,10 @@ function roundOneCount() {
             canDraw = true
             end()
             enemy_1.alive = true
-            // enemy_1_shoot()
             enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_1_shoot.png')"
             sleep(250).then(() => {enemy_1_shoot()})
         }
-    }
-}
-
-function roundTwoCount() {
-    if (roundTwo === true) {
+    } else if (roundTwo === true) {
         if (i !== 0) {
             topText.innerText = i
             i--
@@ -180,11 +175,7 @@ function roundTwoCount() {
             sleep(250).then(() => {enemy_2_shoot()})
             sleep(200).then(() => {enemy_3_shoot()})
         }
-    }
-}
-
-function roundThreeCount() {
-    if (roundThree === true) {
+    } else if (roundThree === true) {
         if (i !== 0) {
             topText.innerText = i
             i--
@@ -195,9 +186,6 @@ function roundThreeCount() {
             enemy_4.alive = true
             enemy_5.alive = true
             enemy_6.alive = true
-            // enemy_4_shoot()
-            // enemy_5_shoot()
-            // enemy_6_shoot()
             enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_4_shoot.png')"
             enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_5_shoot.png')"
             enemyBox_3.style.backgroundImage = "url('JPG/pirate_sprite_6_shoot.png')"
@@ -208,33 +196,14 @@ function roundThreeCount() {
     }
 }
 
-// The following three functions set the intervals for their respective rounds' countdowns.
 
-function beginCountDownOne() {
-    if (roundOne === true) {
-        if (holstered === true && gameOver === false) {
-            countDown = setInterval(roundOneCount, 1000)
-            roundOneCount()
-            holstered = false
-        }
-    }
-} 
+// Sets the intervals for their respective rounds' countdowns.
 
-function beginCountDownTwo() {
-    if (roundTwo === true) {
+function beginCountFromFive() {
+    if (roundOne === true || roundTwo === true || roundThree === true) {
         if (holstered === true && gameOver === false) {
-            countDown = setInterval(roundTwoCount, 1000)
-            roundTwoCount()
-            holstered = false
-        }
-    }
-} 
-
-function beginCountDownThree() {
-    if (roundThree === true) {
-        if (holstered === true && gameOver === false) {
-            countDown = setInterval(roundThreeCount, 1000)
-            roundThreeCount()
+            countDown = setInterval(countFromFive, 1000)
+            countFromFive()
             holstered = false
         }
     }
@@ -261,7 +230,7 @@ document.getElementById('body').addEventListener('click', () => {
     } 
 })
 
-// Begins a round's countdown. Resets the game to roundOneIntro if clicked after Game Over.
+// Begins the countdown. Resets the game to roundOneIntro if clicked after Game Over.
 
 document.getElementById('holsterBox').addEventListener('click', () => {
     if (gameOver === true) {
@@ -287,62 +256,38 @@ document.getElementById('holsterBox').addEventListener('click', () => {
         enemy_5.alive = false
         enemy_6.alive = false
     }
-    if (roundOne === true) {
+    if (roundOne === true || roundTwo === true || roundThree === true) {
         if (holstered === true && gameOver === false) {
-            beginCountDownOne()
-        }
-    } else if (roundTwo === true) {
-        if (holstered === true && gameOver === false) {
-            beginCountDownTwo()
-        }
-    } else if (roundThree === true) {
-        if (holstered === true && gameOver === false) {
-            beginCountDownThree()
+            beginCountFromFive()
         }
     } 
 })
 
-// Resets a countdown if the curser is removed from the holster area before the end of the count.
+// Stops and resets the countdown if the curser is removed from the holster area before the end of the count.
 
 document.getElementById('holsterBox').addEventListener('mouseleave', () => {
-    if (roundOne === true) {
+    if (roundOne === true || roundTwo === true || roundThree === true) {
         if (holstered === false && canDraw === false && gameOver === false) {
-            clearTimeout(beginCountDownOne)
+            clearTimeout(beginCountFromFive)
             setTimeout(end, 1)
             topText.innerText = "Holster Your Weapon"
             holstered = true
             i = 5
         }
-    } else if (roundTwo === true) {
-        if (holstered === false && canDraw === false && gameOver === false) {
-            clearTimeout(beginCountDownTwo)
-            setTimeout(end, 1)
-            topText.innerText = "Holster Your Weapon"
-            holstered = true
-            i = 5
-        }
-    } else if (roundThree === true) {
-        if (holstered === false && canDraw === false && gameOver === false) {
-            clearTimeout(beginCountDownThree)
-            setTimeout(end, 1)
-            topText.innerText = "Holster Your Weapon"
-            holstered = true
-            i = 5
-        }
-    }
+    } 
 })
 
 // The following three listeners shoot at the enemies in the associated grid boxes, then scan for win conditions.
 
 document.getElementById('enemyBox_2').addEventListener('click', () => {
-    if (roundOne === true) {
+    if (roundOne === true && enemy_1.alive === true) {
         if (canDraw === true && gameOver === false) {
             laserBlast()
             enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_1_die.png')"
             enemy_1.alive = false
             sleep(2000).then(() => {scanForWin()})
         }
-    } else if (roundThree === true) {
+    } else if (roundThree === true && enemy_5.alive === true) {
         if (canDraw === true && gameOver === false) {
             laserBlast()
             enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_4_die.png')"
@@ -353,7 +298,7 @@ document.getElementById('enemyBox_2').addEventListener('click', () => {
 })
 
 document.getElementById('enemyBox_1').addEventListener('click', () => {
-    if (roundTwo === true) {
+    if (roundTwo === true && enemy_2.alive === true) {
         if (canDraw === true && gameOver === false) {
             laserBlast()
             enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_2_die.png')"
@@ -364,7 +309,7 @@ document.getElementById('enemyBox_1').addEventListener('click', () => {
                 sleep(2000).then(() => {scanForWin()})
             }
         }
-    } else if (roundThree === true) {
+    } else if (roundThree === true && enemy_4.alive === true) {
         if (canDraw === true && gameOver === false) {
             laserBlast()
             enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_5_die.png')"
@@ -375,7 +320,7 @@ document.getElementById('enemyBox_1').addEventListener('click', () => {
 })
 
 document.getElementById('enemyBox_3').addEventListener('click', () => {
-    if (roundTwo === true) {
+    if (roundTwo === true && enemy_3.alive === true) {
         if (canDraw === true && gameOver === false) {
             laserBlast()
             enemyBox_3.style.backgroundImage = "url('JPG/pirate_sprite_3_die.png')"
@@ -386,7 +331,7 @@ document.getElementById('enemyBox_3').addEventListener('click', () => {
                 sleep(2000).then(() => {scanForWin()})
             }
         }
-    } else if (roundThree === true) {
+    } else if (roundThree === true && enemy_6.alive === true) {
         if (canDraw === true && gameOver === false) {
             laserBlast()
             enemyBox_3.style.backgroundImage = "url('JPG/pirate_sprite_6_die.png')"
