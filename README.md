@@ -77,7 +77,7 @@ If this is the case, there will ideally be five rounds instead of three.
 
 The character sprites don't re-scale the same way as the background, so I'm not crazy about how it looks as the screen gets smaller.
 
-I'm not 100% certain, but based on my play-tests, it seems like the enemies get more challenging upon replay. It might be because the interval on their attack function isn't cleared when they die. But I'm not sure. I kind of like this feature, in any case.
+The final round might be a little easy.
 
 
 

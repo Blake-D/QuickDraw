@@ -111,10 +111,10 @@ function laserBlast() {
     audio.play()
 }
 
-// The following three functions scan for win conditions in their respective combat rounds. They are called each time the player shoots. If win conditions are met, they cue the transition into the next round.
+// Scans for win conditions when the player fires.
 
-function scanForRoundOneWin() {
-    if (enemy_1.alive === false) {
+function scanForWin() {
+    if (roundOne === true && enemy_1.alive === false) {
         roundOne = false
         roundTwo = true
         topText.innerText = "Round 2"
@@ -126,11 +126,7 @@ function scanForRoundOneWin() {
         canDraw = false
         countDown = null
         i = 5
-    }
-}
-
-function scanForRoundTwoWin() {
-    if (enemy_2.alive === false && enemy_3.alive === false) {
+    } else if (roundTwo === true && enemy_2.alive === false && enemy_3.alive === false) {
         roundTwo = false
         roundThree = true
         topText.innerText = "Round 3"
@@ -142,11 +138,7 @@ function scanForRoundTwoWin() {
         countDown = null
         i = 5
         roundThreeIntro()
-    }
-}
-
-function scanForRoundThreeWin() {
-    if (enemy_4.alive === false && enemy_5.alive === false && enemy_6.alive === false) {
+    } else if (roundThree === true && enemy_4.alive === false && enemy_5.alive === false && enemy_6.alive === false) {
         roundThree = false
         topText.innerText = "You Win!"
         sleep(3000).then(() => {endSequence()})
@@ -165,8 +157,9 @@ function roundOneCount() {
             canDraw = true
             end()
             enemy_1.alive = true
-            enemy_1_shoot()
+            // enemy_1_shoot()
             enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_1_shoot.png')"
+            sleep(250).then(() => {enemy_1_shoot()})
         }
     }
 }
@@ -182,10 +175,10 @@ function roundTwoCount() {
             end()
             enemy_2.alive = true
             enemy_3.alive = true
-            enemy_2_shoot()
-            enemy_3_shoot()
             enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_2_shoot.png')"
             enemyBox_3.style.backgroundImage = "url('JPG/pirate_sprite_3_shoot.png')"
+            sleep(250).then(() => {enemy_2_shoot()})
+            sleep(200).then(() => {enemy_3_shoot()})
         }
     }
 }
@@ -202,12 +195,15 @@ function roundThreeCount() {
             enemy_4.alive = true
             enemy_5.alive = true
             enemy_6.alive = true
-            enemy_4_shoot()
-            enemy_5_shoot()
-            enemy_6_shoot()
+            // enemy_4_shoot()
+            // enemy_5_shoot()
+            // enemy_6_shoot()
             enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_4_shoot.png')"
             enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_5_shoot.png')"
             enemyBox_3.style.backgroundImage = "url('JPG/pirate_sprite_6_shoot.png')"
+            sleep(500).then(() => {enemy_4_shoot()})
+            sleep(400).then(() => {enemy_5_shoot()})
+            sleep(300).then(() => {enemy_6_shoot()})
         }
     }
 }
@@ -344,14 +340,14 @@ document.getElementById('enemyBox_2').addEventListener('click', () => {
             laserBlast()
             enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_1_die.png')"
             enemy_1.alive = false
-            sleep(2000).then(() => {scanForRoundOneWin()})
+            sleep(2000).then(() => {scanForWin()})
         }
     } else if (roundThree === true) {
         if (canDraw === true && gameOver === false) {
             laserBlast()
             enemyBox_2.style.backgroundImage = "url('JPG/pirate_sprite_4_die.png')"
             enemy_5.alive = false
-            scanForRoundThreeWin()
+            scanForWin()
         }
     }
 })
@@ -363,9 +359,9 @@ document.getElementById('enemyBox_1').addEventListener('click', () => {
             enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_2_die.png')"
             enemy_2.alive = false
             if (enemy_3.alive === true) {
-                scanForRoundTwoWin()
+                scanForWin()
             } else if (enemy_3.alive === false ) {
-                sleep(2000).then(() => {scanForRoundTwoWin()})
+                sleep(2000).then(() => {scanForWin()})
             }
         }
     } else if (roundThree === true) {
@@ -373,7 +369,7 @@ document.getElementById('enemyBox_1').addEventListener('click', () => {
             laserBlast()
             enemyBox_1.style.backgroundImage = "url('JPG/pirate_sprite_5_die.png')"
             enemy_4.alive = false
-            scanForRoundThreeWin()
+            scanForWin()
         }
     }
 })
@@ -385,9 +381,9 @@ document.getElementById('enemyBox_3').addEventListener('click', () => {
             enemyBox_3.style.backgroundImage = "url('JPG/pirate_sprite_3_die.png')"
             enemy_3.alive = false
             if (enemy_2.alive === true) {
-                scanForRoundTwoWin()
+                scanForWin()
             } else if (enemy_2.alive === false ) {
-                sleep(2000).then(() => {scanForRoundTwoWin()})
+                sleep(2000).then(() => {scanForWin()})
             }
         }
     } else if (roundThree === true) {
@@ -395,7 +391,7 @@ document.getElementById('enemyBox_3').addEventListener('click', () => {
             laserBlast()
             enemyBox_3.style.backgroundImage = "url('JPG/pirate_sprite_6_die.png')"
             enemy_6.alive = false
-            scanForRoundThreeWin()
+            scanForWin()
         }
     }
 })
@@ -407,7 +403,7 @@ document.getElementById('enemyBox_3').addEventListener('click', () => {
 // Enemy 1 (round 1: in enemyBox 2)
 
 const enemy_1 = {
-    accuracy: 5,
+    accuracy: 8,
     alive: true,
 }
 
@@ -429,7 +425,7 @@ function enemy_1_shoot() {
         }
         enemy_1_blast()
         generateNumber_1()
-        if (randomNumber_1 >= 4) {
+        if (randomNumber_1 >= 6) {
             enemyBox_2.innerText = "Hit"
             gameOver = true
             topText.innerText = "Game Over"
@@ -437,7 +433,7 @@ function enemy_1_shoot() {
         } else {
             enemyBox_2.innerText = "Miss"
             sleep(200).then(() => {enemyBox_2.innerText = ""})
-            setInterval(enemy_1_shoot, 500)
+            setTimeout(enemy_1_shoot, 500)
         }
     }
 }
@@ -445,7 +441,7 @@ function enemy_1_shoot() {
 //Enemy 2 (round 2: in enemy box 1)
 
 const enemy_2 = {
-    accuracy: 5,
+    accuracy: 8,
     alive: true,
 }
 
@@ -463,7 +459,7 @@ function enemy_2_shoot() {
         }
         enemy_2_blast()
         generateNumber_2()
-        if (randomNumber_2 >= 4) {
+        if (randomNumber_2 >= 6) {
             enemyBox_1.innerText = "Hit"
             gameOver = true
             topText.innerText = "Game Over"
@@ -471,7 +467,7 @@ function enemy_2_shoot() {
         } else {
             enemyBox_1.innerText = "Miss"
             sleep(200).then(() => {enemyBox_1.innerText = ""})
-            setInterval(enemy_2_shoot, 750)
+            setTimeout(enemy_2_shoot, 750)
         }
     }
 }
@@ -479,7 +475,7 @@ function enemy_2_shoot() {
 //Enemy 3 (round 2: in enemy box 3)
 
 const enemy_3 = {
-    accuracy: 5,
+    accuracy: 8,
     alive: true,
 }
 
@@ -497,7 +493,7 @@ function enemy_3_shoot() {
         }
         enemy_3_blast()
         generateNumber_3()
-        if (randomNumber_3 >= 4) {
+        if (randomNumber_3 >= 6) {
             enemyBox_3.innerText = "Hit"
             gameOver = true
             topText.innerText = "Game Over"
@@ -505,7 +501,7 @@ function enemy_3_shoot() {
         } else {
             enemyBox_3.innerText = "Miss"
             sleep(200).then(() => {enemyBox_3.innerText = ""})
-            setInterval(enemy_3_shoot, 1000)
+            setTimeout(enemy_3_shoot, 1000)
         }
     }
 }
@@ -513,7 +509,7 @@ function enemy_3_shoot() {
 //Enemy 4 (round 3: in enemy box 1)
 
 const enemy_4 = {
-    accuracy: 5,
+    accuracy: 10,
     alive: true,
 }
 
@@ -531,7 +527,7 @@ function enemy_4_shoot() {
         }
         enemy_4_blast()
         generateNumber_4()
-        if (randomNumber_4 >= 4) {
+        if (randomNumber_4 >= 8) {
             enemyBox_1.innerText = "Hit"
             gameOver = true
             topText.innerText = "Game Over"
@@ -539,7 +535,7 @@ function enemy_4_shoot() {
         } else {
             enemyBox_1.innerText = "Miss"
             sleep(200).then(() => {enemyBox_1.innerText = ""})
-            setInterval(enemy_4_shoot, 1000)
+            setTimeout(enemy_4_shoot, 250)
         }
     }
 }
@@ -547,7 +543,7 @@ function enemy_4_shoot() {
 //Enemy 5 (round 3: in enemy box 2)
 
 const enemy_5 = {
-    accuracy: 5,
+    accuracy: 8,
     alive: true,
 }
 
@@ -565,7 +561,7 @@ function enemy_5_shoot() {
         }
         enemy_5_blast()
         generateNumber_5()
-        if (randomNumber_5 >= 4) {
+        if (randomNumber_5 >= 6) {
             enemyBox_2.innerText = "Hit"
             gameOver = true
             topText.innerText = "Game Over"
@@ -573,7 +569,7 @@ function enemy_5_shoot() {
         } else {
             enemyBox_2.innerText = "Miss"
             sleep(200).then(() => {enemyBox_2.innerText = ""})
-            setInterval(enemy_5_shoot, 1000)
+            setTimeout(enemy_5_shoot, 500)
         }
     }
 }
@@ -581,7 +577,7 @@ function enemy_5_shoot() {
 //Enemy 6 (round 3: in enemy box 3)
 
 const enemy_6 = {
-    accuracy: 5,
+    accuracy: 4,
     alive: true,
 }
 
@@ -599,7 +595,7 @@ function enemy_6_shoot() {
         }
         enemy_6_blast()
         generateNumber_6()
-        if (randomNumber_6 >= 4) {
+        if (randomNumber_6 >= 3) {
             enemyBox_3.innerText = "Hit"
             gameOver = true
             topText.innerText = "Game Over"
@@ -607,7 +603,7 @@ function enemy_6_shoot() {
         } else {
             enemyBox_3.innerText = "Miss"
             sleep(200).then(() => {enemyBox_3.innerText = ""})
-            setInterval(enemy_6_shoot, 1000)
+            setTimeout(enemy_6_shoot, 750)
         }
     }
 }
