@@ -63,7 +63,7 @@ If the player loses a match, they must start from the beginning.
 
 ### Gameplay
 
-After each round, the player will get to sift through the felled combatants' possessions, which will include different types of guns and armor. The player may choose one of the dropped items, which will affect subsequence gameplay by either allowing the player to absorb one or two shots, or shoot two enemies at once, etc.
+After each round, the player will get to sift through the felled combatants' possessions, which will include different types of guns and armor. The player may choose one of the dropped items, which will affect subsequent gameplay by either allowing the player to absorb one or two shots, or shoot two enemies at once, etc.
 
 If this is the case, there will ideally be five rounds instead of three.
 
