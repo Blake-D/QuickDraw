@@ -15,6 +15,8 @@ When the count reaches 0, the player must click on the enemies before they deal 
 
 If the player loses a match, they must start from the beginning.
 
+[Play game](https://blake-d.github.io/ShowdownOnCygnus8/)
+
 ![Screenshot](JPG/screen_shot.png)
 
 ## **Wireframe**
