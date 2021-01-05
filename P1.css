@@ -1,5 +1,5 @@
 body {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P', monospace;
     background: url('JPG/space_station_background.png');
     background-size: cover;
     margin: 0;
@@ -19,7 +19,6 @@ div {
 }
 
 #topText {
-    font-family: 'Press Start 2P', cursive;
     font-size: 40px;
     padding-top: 5%;
     text-align: center;
@@ -30,7 +29,6 @@ div {
 }
 
 #picBox {
-    font-family: 'Press Start 2P', cursive;
     grid-area: PB;
     text-align: right;
     background-size: contain;
@@ -39,7 +37,6 @@ div {
 }
 
 #enemyBox_1 {
-    font-family: 'Press Start 2P', cursive;
     grid-area: E1;
     background-size: contain;
     background-repeat: no-repeat;
@@ -48,7 +45,6 @@ div {
 }
 
 #enemyBox_2 {
-    font-family: 'Press Start 2P', cursive;
     text-align: center;
     grid-area: E2;
     background-size: contain;
@@ -58,7 +54,6 @@ div {
 }
 
 #enemyBox_3 {
-    font-family: 'Press Start 2P', cursive;
     grid-area: E3;
     background-size: contain;
     background-repeat: no-repeat;
@@ -67,12 +62,10 @@ div {
 }
 
 #leftBar {
-    font-family: 'Press Start 2P', cursive;
     grid-area: LB;
 }
 
 #rightBar {
-    font-family: 'Press Start 2P', cursive;
     grid-area: RB;
 }
 
@@ -81,13 +74,11 @@ div {
 }
 
 #holsterBox {
-    font-family: 'Press Start 2P', cursive;
     grid-area: HB;
     text-align: center;
 }
 
 #holster_text {
-    font-family: 'Press Start 2P', cursive;
     text-align: center;
     padding-top: 20%;
 }
